@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio MIAGE | Samira Alim</title>
+    <title>Portfolio MIAGE | Alim Samira</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,111 +11,101 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">SAMIRA<span>.</span></div>
+        <div class="logo">AAAS<span>.</span></div>
         <ul class="menu">
-            <li><a href="#" class="nav-link active" onclick="showPage('about')">Moi</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('r1-r2')">Rubriques 1 & 2</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('r3')">Rubrique 3</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('r4-r5')">Rubriques 4 & 5</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('r6')">Rubrique 6</a></li>
+            <li><a href="#" class="nav-link active" onclick="showPage('about')">Accueil</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('travaux')">Travaux</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('cours')">Cours</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('certifs')">Projets & Certifs</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('crm')">Projet CRM</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('soutenance')">Soutenance</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('veille')">Veille</a></li>
         </ul>
     </nav>
 
     <main class="container">
-        
         <section id="about" class="page active">
             <div class="glass-card hero">
-                <span class="badge">PROFIL</span>
-                <h1>Astagabdo Amadou Alim Samira</h1>
-                <p class="desc">Étudiante MIAGE - Expertise en Systèmes d'Information.</p>
-                <div class="contact-bar">
-                    <p><i class="fas fa-envelope"></i> alim.samira2002@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> +33 6 99 67 38 86</p>
-                </div>
+                <span class="badge">PROFIL MIAGE</span>
+                <h1>Alim Samira</h1>
+                <p class="desc">Étudiante en Méthodes Informatiques Appliquées à la Gestion des Entreprises.</p>
                 <div class="cta-group">
-                    <a href="assets/CV_Samira_Alim.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV (ATS)</a>
+                    <a href="assets/CV_Samira_Alim.pdf" download class="btn-main"><i class="fas fa-download"></i> Mon CV (ATS)</a>
                     <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" class="btn-sub"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
         </section>
 
-        <section id="r1-r2" class="page">
-            <h2 class="section-title">Productions Académiques</h2>
+        <section id="travaux" class="page">
+            <h2 class="section-title">Travaux Dirigés</h2>
             <div class="grid">
                 <div class="glass-card">
-                    <div class="card-head">
-                        <i class="fas fa-tasks icon-r"></i>
-                        <h3>Rubrique 1 : Travaux demandés</h3>
-                    </div>
-                    <p class="comp">Gérer et organiser ses productions académiques.</p>
-                    <div class="upload-zone">
-                        <input type="file" id="file1" hidden onchange="showName(this, 'n1')">
-                        <label for="file1" class="btn-sm"><i class="fas fa-cloud-upload-alt"></i> Déposer</label>
-                        <p id="n1" class="file-info"></p>
+                    <p class="comp">Rubrique 1 : Gérer ses productions académiques</p>
+                    <div class="file-list">
+                        <div class="file-item">
+                            <span>Dossier TD SQL</span>
+                            <a href="assets/TD_SQL_Samira.pdf" target="_blank"><i class="fas fa-eye"></i></a>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="cours" class="page">
+            <h2 class="section-title">Supports de Cours</h2>
+            <div class="glass-card">
+                <p class="comp">Rubrique 2 : Autonomie et gestion des ressources</p>
+                <div class="file-item">
+                    <span>Notes de cours structurées</span>
+                    <a href="assets/cours_complet.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifs" class="page">
+            <h2 class="section-title">Projets & Certifications</h2>
+            <div class="grid">
                 <div class="glass-card">
-                    <div class="card-head">
-                        <i class="fas fa-book-open icon-r"></i>
-                        <h3>Rubrique 2 : Supports de cours</h3>
-                    </div>
-                    <p class="comp">Autonomie dans la prise de notes et gestion des ressources.</p>
-                    <div class="file-item">
-                        <span>Notes de cours complétées</span>
-                        <div class="action-icons">
-                             <a href="assets/supports_cours.pdf" target="_blank" class="icon-btn"><i class="fas fa-eye"></i></a>
-                             <a href="assets/supports_cours.pdf" download class="icon-btn"><i class="fas fa-download"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="r3" class="page">
-            <h2 class="section-title">Rubrique 3 : Certifications & Projets</h2>
-            <div class="glass-card">
-                <p class="comp">Valoriser ses compétences par des attestations.</p>
-                <div class="grid-cert">
-                    <div class="cert-card">
+                    <p class="comp">Rubrique 3 : Valoriser ses compétences</p>
+                    <div class="cert-item">
                         <i class="fas fa-certificate"></i>
-                        <span>Attestation Odoo</span>
-                        <div class="btn-group">
-                            <a href="assets/certificat_odoo.pdf" target="_blank" class="btn-sm">Voir</a>
-                            <a href="assets/certificat_odoo.pdf" download class="btn-sm"><i class="fas fa-download"></i></a>
-                        </div>
+                        <span>Certification Odoo</span>
+                        <a href="assets/certificat_odoo.pdf" target="_blank" class="btn-sm">Consulter</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="r4-r5" class="page">
-            <h2 class="section-title">Projet Final & Soutenance</h2>
+        <section id="crm" class="page">
+            <h2 class="section-title">Projet CRM (Odoo)</h2>
             <div class="glass-card">
-                <div class="header-flex">
-                    <h3>Rubrique 4 : Projet final (Odoo)</h3>
-                    <a href="assets/TP_Odoo_Samira.pdf" download class="btn-download"><i class="fas fa-download"></i> Rapport</a>
-                </div>
+                <p class="comp">Rubrique 4 : Réalisation d'un projet numérique</p>
                 <div class="preview-box">
-                    <object data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
-                        <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="450px" style="border:none;"></iframe>
+                    <object data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="400px">
+                        <p>Aperçu du rapport Odoo : <a href="assets/TP_Odoo_Samira.pdf">Ouvrir le document</a></p>
                     </object>
                 </div>
             </div>
-            <div class="glass-card">
-                <h3>Rubrique 5 : Diaporama de soutenance</h3>
-                <p class="comp">Synthétiser et présenter un projet de manière professionnelle.</p>
-                <a href="assets/Soutenance_Samira.pptx" download class="btn-main"><i class="fas fa-file-powerpoint"></i> Télécharger Diaporama</a>
+        </section>
+
+        <section id="soutenance" class="page">
+            <h2 class="section-title">Présentation de Soutenance</h2>
+            <div class="glass-card text-center">
+                <p class="comp">Rubrique 5 : Synthétiser et présenter professionnellement</p>
+                <i class="fas fa-file-powerpoint fa-3x" style="color: #d24726; margin: 20px 0;"></i>
+                <br>
+                <a href="assets/Soutenance_Samira.pptx" download class="btn-main">Télécharger le Diaporama</a>
             </div>
         </section>
 
-        <section id="r6" class="page">
-            <h2 class="section-title">Rubrique 6 : Autres ressources</h2>
+        <section id="veille" class="page">
+            <h2 class="section-title">Veille Technologique</h2>
             <div class="glass-card">
-                <p class="comp">Veille et enrichissement personnel.</p>
+                <p class="comp">Rubrique 6 : Capacité d'enrichissement personnel</p>
                 <div class="veille-content">
-                    <h4>Analyse : Stockable vs Consommable</h4>
-                    <p>Dans Odoo, un produit <strong>stockable</strong> permet le suivi précis des quantités en temps réel. Un produit <strong>consommable</strong> est considéré comme toujours disponible sans suivi de stock strict.</p>
-                    <a href="https://www.odoo.com" target="_blank" class="ref-link">Source : Odoo Documentation ↗</a>
+                    <h4>Analyse : Produits Stockables vs Consommables</h4>
+                    <p>Étude réalisée lors du projet Odoo sur la gestion des flux d'inventaire.</p>
+                    <a href="https://www.odoo.com" target="_blank" class="ref-link">Documentation officielle Odoo ↗</a>
                 </div>
             </div>
         </section>

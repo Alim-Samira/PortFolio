@@ -1,71 +1,16 @@
-:root {
-    --primary: #4f46e5;
-    --glass: rgba(255, 255, 255, 0.4);
-    --border: rgba(255, 255, 255, 0.2);
-    --text: #1f2937;
+function showPage(pageId) {
+    // Masquer toutes les sections
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    
+    // Afficher la page demandée
+    const target = document.getElementById(pageId);
+    if (target) { target.classList.add('active'); }
+
+    // Gérer l'état actif du menu
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
-    background-attachment: fixed;
-    color: var(--text);
-    line-height: 1.5;
-    font-size: 0.95rem; /* Taille de base réduite */
-}
-
-/* NAVBAR */
-.navbar {
-    position: sticky; top: 12px; margin: 0 5%;
-    background: var(--glass); backdrop-filter: blur(12px);
-    border: 1px solid var(--border); border-radius: 12px;
-    padding: 0.6rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
-    z-index: 1000;
-}
-
-.logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
-.menu { display: flex; list-style: none; gap: 5px; }
-.menu a { text-decoration: none; color: var(--text); font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: 0.2s; font-size: 0.85rem; }
-.menu a.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-
-/* LAYOUT */
-.container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
-.page { display: none; animation: fadeIn 0.4s ease forwards; }
-.page.active { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-/* CARDS */
-.glass-card {
-    background: var(--glass); backdrop-filter: blur(10px);
-    border: 1px solid var(--border); border-radius: 16px;
-    padding: 25px; box-shadow: 0 6px 24px rgba(31, 38, 135, 0.05);
-    margin-bottom: 18px;
-}
-
-.hero { text-align: center; padding: 40px 15px; }
-.badge { background: var(--primary); color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; }
-h1 { font-size: 2.2rem; margin: 12px 0; letter-spacing: -0.8px; } /* Titre réduit */
-.desc { font-size: 1rem; opacity: 0.85; margin-bottom: 15px; }
-
-.section-title { border-left: 4px solid var(--primary); padding-left: 12px; margin-bottom: 20px; font-size: 1.3rem; }
-.comp { font-size: 0.75rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
-
-/* ELEMENTS */
-.file-item { 
-    display: flex; justify-content: space-between; align-items: center; 
-    background: rgba(255,255,255,0.4); padding: 10px 12px; border-radius: 8px; margin-top: 8px; font-size: 0.9rem;
-}
-
-.action-icons .icon-btn { margin-left: 8px; color: var(--primary); }
-
-/* BOUTONS */
-.btn-main { background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; font-size: 0.85rem; transition: 0.2s; }
-.btn-sub { border: 1.5px solid var(--primary); color: var(--primary); padding: 9px 18px; border-radius: 8px; text-decoration: none; margin-left: 8px; font-weight: 700; font-size: 0.85rem; }
-.btn-sm { background: white; color: var(--primary); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; border: 1px solid var(--border); text-decoration: none; cursor: pointer; }
-
-.preview-box { background: white; border-radius: 8px; overflow: hidden; margin-top: 12px; border: 1px solid var(--border); }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-.file-info { margin-top: 8px; color: var(--primary); font-size: 0.75rem; font-weight: 600; }
