@@ -38,26 +38,34 @@
 
         <section id="travaux" class="page">
             <h2 class="section-title">Travaux Dirigés</h2>
-            <div class="grid">
-                <div class="glass-card">
-                    <div class="card-head">
-                        <i class="fas fa-file-invoice icon-r"></i>
-                        <h3>TP Odoo - Gestion d'entreprise</h3>
+            
+            <div class="glass-card">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-pdf icon-pdf"></i>
+                        <span>TP Odoo - Gestion d'entreprise</span>
                     </div>
-                    [cite_start]<p class="comp">Configuration d'edu-techshop, gestion des ventes et achats[cite: 630, 645, 663].</p>
-                    <div class="action-buttons">
-                        <a href="assets/TP Odoo.pdf" target="_blank" class="btn-sm"><i class="fas fa-eye"></i> Visualiser</a>
-                        <a href="assets/TP Odoo.pdf" download class="btn-sm"><i class="fas fa-download"></i> Télécharger</a>
+                    <div class="file-actions">
+                        <a href="assets/TP Odoo.pdf" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                        <a href="assets/TP Odoo.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 
-                <div class="glass-card">
-                    <p class="comp">Gérer et organiser ses productions académiques.</p>
-                    <div class="upload-zone">
-                        <input type="file" id="up1" hidden onchange="showName(this, 'n1')">
-                        <label for="up1" class="btn-sm"><i class="fas fa-upload"></i> Déposer un nouveau travail</label>
-                        <p id="n1" class="file-info"></p>
-                    </div>
+                <p class="comp">Analyse de flux : Achats, Ventes et Inventaire.</p>
+                
+                <div class="preview-container">
+                    <object data="assets/TP Odoo.pdf" type="application/pdf" width="100%" height="450px">
+                        <iframe src="assets/TP Odoo.pdf" width="100%" height="450px" style="border:none;"></iframe>
+                    </object>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <p class="comp">Ajouter d'autres productions académiques</p>
+                <div class="upload-zone">
+                    <input type="file" id="up1" hidden onchange="showName(this, 'n1')">
+                    <label for="up1" class="btn-sm"><i class="fas fa-plus"></i> Ajouter un fichier</label>
+                    <p id="n1" class="file-info"></p>
                 </div>
             </div>
         </section>
@@ -68,20 +76,18 @@
                 <p class="comp">Gestion des ressources et autonomie.</p>
                 <div class="file-item">
                     <span>Notes de cours structurées</span>
-                    <a href="assets/supports_cours.pdf" target="_blank" class="icon-link"><i class="fas fa-eye"></i></a>
+                    <a href="assets/supports_cours.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
                 </div>
             </div>
         </section>
 
         <section id="certifs" class="page">
             <h2 class="section-title">Projets & Certifications</h2>
-            <div class="grid">
-                <div class="glass-card">
-                    <div class="cert-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>Attestation Odoo</span>
-                        <a href="assets/certificat_odoo.pdf" target="_blank" class="btn-sm">Consulter</a>
-                    </div>
+            <div class="glass-card">
+                <div class="cert-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Attestation Odoo Education</span>
+                    <a href="assets/certificat_odoo.pdf" target="_blank" class="btn-sm">Consulter</a>
                 </div>
             </div>
         </section>
@@ -89,33 +95,27 @@
         <section id="crm" class="page">
             <h2 class="section-title">Projet CRM</h2>
             <div class="glass-card">
-                [cite_start]<p class="comp">Mise en place d'un ERP (Odoo) pour edu-techshop[cite: 645].</p>
-                <div class="preview-box">
-                    <object data="assets/TP Odoo.pdf" type="application/pdf" width="100%" height="500px">
-                        <iframe src="assets/TP Odoo.pdf" width="100%" height="500px"></iframe>
-                    </object>
-                </div>
+                <p class="comp">Mise en place de l'ERP Odoo pour la boutique edu-techshop.</p>
+                <p>Ce projet détaille la configuration complète d'une base de données commerciale.</p>
+                <a href="#" onclick="showPage('travaux')" class="btn-main" style="margin-top:10px;">Voir le rapport complet</a>
             </div>
         </section>
 
         <section id="soutenance" class="page">
             <h2 class="section-title">Soutenance</h2>
             <div class="glass-card text-center">
-                <p class="comp">Support visuel pour présentation orale.</p>
                 <i class="fas fa-file-powerpoint fa-3x" style="color: #d24726; margin-bottom: 15px;"></i>
-                <br>
-                <a href="assets/Soutenance_Samira.pptx" download class="btn-main"><i class="fas fa-file-powerpoint"></i> Télécharger le Diaporama</a>
+                <p class="comp">Présentation orale du projet MIAGE.</p>
+                <a href="assets/Soutenance_Samira.pptx" download class="btn-main">Télécharger le support</a>
             </div>
         </section>
 
         <section id="veille" class="page">
             <h2 class="section-title">Veille</h2>
             <div class="glass-card">
-                <p class="comp">Enrichissement et veille technologique.</p>
-                <h4>Analyse : Produit Stockable vs Consommable</h4>
-                <p style="font-size: 0.85rem; margin-top: 10px;">
-                    [cite_start]Un produit stockable permet de suivre les quantités en temps réel tandis qu'un produit consommable est considéré par Odoo comme toujours disponible en stock[cite: 626, 628].
-                </p>
+                <p class="comp">Analyse technologique</p>
+                <h4>Stockable vs Consommable dans Odoo</h4>
+                <p style="margin-top: 10px;">Les produits <strong>Stockables</strong> impactent l'inventaire physique, tandis que les <strong>Consommables</strong> sont supposés toujours disponibles.</p>
             </div>
         </section>
     </main>
