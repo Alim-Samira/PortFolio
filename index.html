@@ -2,38 +2,92 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Samira Alim | Accueil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samira Alim | Portfolio MIAGE</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <nav class="navbar">
-        <a href="index.html" class="logo">SAMIRA<span>.</span></a>
+        <a href="#" class="logo" onclick="showPage('home')">SAMIRA<span>.</span></a>
         <ul class="menu">
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="td.html">Travaux</a></li>
-            <li><a href="projets.html">CRM & Projets</a></li>
-            <li><a href="veille.html">Veille</a></li>
+            <li><a href="#" class="nav-link active" data-target="home" onclick="showPage('home')">Accueil</a></li>
+            <li><a href="#" class="nav-link" data-target="td" onclick="showPage('td')">Travaux</a></li>
+            <li><a href="#" class="nav-link" data-target="projets" onclick="showPage('projets')">CRM & Projets</a></li>
+            <li><a href="#" class="nav-link" data-target="veille" onclick="showPage('veille')">Veille</a></li>
         </ul>
     </nav>
 
-    <main class="container">
-        <div class="glass-card">
-            <span style="text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: var(--primary);">Étudiante MIAGE</span>
-            <h1 style="font-size: 3.5rem; margin: 10px 0;">Astagabdo Amadou <br>Alim Samira</h1>
-            <p style="font-size: 1.2rem; opacity: 0.8; max-width: 600px;">Future experte SI. Passionnée par la gestion de projets complexes et le développement de solutions innovantes.</p>
-            
-            <div style="margin: 30px 0; display: flex; gap: 20px; flex-wrap: wrap;">
-                <span>📞 +33 6 99 67 38 86</span>
-                <span>📧 alim.samira2002@gmail.com</span>
-                <span>🔗 <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" style="color: inherit;">LinkedIn</a></span>
-            </div>
+    <section id="home" class="page active">
+        <div class="container">
+            <div class="glass-card hero-card">
+                <span class="badge">Étudiante MIAGE</span>
+                <h1>Astagabdo Amadou Alim Samira</h1>
+                <p class="hero-desc">Future experte SI. Spécialisée en gestion de projet et développement CRM.</p>
+                
+                <div class="contact-grid">
+                    <span>📞 +33 6 99 67 38 86</span>
+                    <span>📧 alim.samira2002@gmail.com</span>
+                    <span>🔗 <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank">LinkedIn</a></span>
+                </div>
 
-            <div class="cta">
-                <a href="assets/cv.pdf" download class="btn-glass">Télécharger mon CV</a>
-                <a href="projets.html" class="btn-glass" style="background: white; color: var(--dark); margin-left: 10px;">Voir mes projets</a>
+                <div class="cta-area">
+                    <a href="assets/cv.pdf" download class="btn-glass">Télécharger CV</a>
+                    <button class="btn-outline" onclick="showPage('projets')">Voir mes projets</button>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <section id="td" class="page">
+        <div class="container">
+            <h2 class="title">Travaux Dirigés</h2>
+            <div class="grid">
+                <div class="glass-card">
+                    <h3>Base de Données</h3>
+                    <p>Optimisation SQL et modélisation.</p>
+                    <a href="#" class="btn-sm">Ouvrir PDF</a>
+                </div>
+                <div class="glass-card drop-zone">
+                    <p>Ajouter un document TD</p>
+                    <input type="file" id="file-td" hidden>
+                    <label for="file-td" class="btn-sm">Parcourir l'appareil</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="page">
+        <div class="container">
+            <h2 class="title">Projet Final : CRM</h2>
+            <div class="glass-card">
+                <div class="project-header">
+                    <h3>Système de Gestion Client</h3>
+                    <span class="tag">Projet Majeur</span>
+                </div>
+                <p>Développement d'une solution complète pour PME (UML, Java/PHP, SQL).</p>
+                <div class="file-actions">
+                    <button class="btn-glass">Consulter le Rapport</button>
+                    <button class="btn-outline">Support de Soutenance</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="veille" class="page">
+        <div class="container">
+            <h2 class="title">Veille Technologique</h2>
+            <div class="grid">
+                <div class="glass-card">
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Impact de l'IA générative dans les processus MIAGE.</p>
+                    <a href="#" class="btn-sm">Lire l'article</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>

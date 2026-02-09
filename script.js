@@ -1,20 +1,32 @@
-function openTab(evt, tabName) {
-    // 1. Cacher tous les contenus
-    const tabContents = document.querySelectorAll(".tab-content");
-    tabContents.forEach(content => content.classList.remove("active"));
+function showPage(pageId) {
+    // 1. Cacher toutes les pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
 
-    // 2. Retirer la classe active de tous les liens
-    const tabLinks = document.querySelectorAll(".tab-link");
-    tabLinks.forEach(link => link.classList.remove("active"));
+    // 2. Afficher la page demandée
+    const targetPage = document.getElementById(pageId);
+    targetPage.classList.add('active');
 
-    // 3. Afficher le contenu actuel et ajouter la classe active au bouton
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
+    // 3. Mettre à jour le menu (couleur bleue sur l'onglet actif)
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('data-target') === pageId) {
+            link.classList.add('active');
+        }
+    });
+
+    // Scroll automatique vers le haut de la page
+    window.scrollTo(0, 0);
 }
 
-// Optionnel : Gestion de l'upload (Simulation front-end)
-const fileInput = document.getElementById('file-upload');
-fileInput.addEventListener('change', (e) => {
-    const fileName = e.target.files[0].name;
-    alert(`Fichier "${fileName}" prêt à être lié (Note: Pour un vrai stockage, utilisez un backend ou GitHub API).`);
+// Simulation d'ajout de fichier
+document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', function() {
+        if(this.files[0]) {
+            alert("Fichier sélectionné : " + this.files[0].name + ". Pour le sauvegarder réellement, il faudra le 'pusher' sur ton GitHub Assets.");
+        }
+    });
 });
