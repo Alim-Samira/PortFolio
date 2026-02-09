@@ -2,84 +2,38 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Astagabdo Amadou Alim Samira</title>
+    <title>Samira Alim | Accueil</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <nav class="navbar">
-        <div class="logo">AAAS<span>.</span></div>
-        <ul class="nav-links">
-            <li><a href="#about">Accueil</a></li>
-            <li><a href="#td">Travaux</a></li>
-            <li><a href="#cours">Cours</a></li>
-            <li><a href="#projets">Projets & Certifs</a></li>
-            <li><a href="#crm">Projet CRM</a></li>
-            <li><a href="#soutenance">Soutenance</a></li>
-            <li><a href="#veille">Veille</a></li>
+        <a href="index.html" class="logo">SAMIRA<span>.</span></a>
+        <ul class="menu">
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="td.html">Travaux</a></li>
+            <li><a href="projets.html">CRM & Projets</a></li>
+            <li><a href="veille.html">Veille</a></li>
         </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
     </nav>
 
-    <header id="about" class="hero">
-        <div class="hero-content">
-            <h1>Astagabdo Amadou Alim Samira</h1>
-            <p class="subtitle">Étudiante en MIAGE | Future Experte SI</p>
-            <div class="cta-buttons">
-                <a href="assets/cv_ats_samira.pdf" class="btn primary" download>Télécharger CV (ATS)</a>
-                <a href="https://linkedin.com/in/votre-profil" class="btn secondary" target="_blank">LinkedIn</a>
+    <main class="container">
+        <div class="glass-card">
+            <span style="text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: var(--primary);">Étudiante MIAGE</span>
+            <h1 style="font-size: 3.5rem; margin: 10px 0;">Astagabdo Amadou <br>Alim Samira</h1>
+            <p style="font-size: 1.2rem; opacity: 0.8; max-width: 600px;">Future experte SI. Passionnée par la gestion de projets complexes et le développement de solutions innovantes.</p>
+            
+            <div style="margin: 30px 0; display: flex; gap: 20px; flex-wrap: wrap;">
+                <span>📞 +33 6 99 67 38 86</span>
+                <span>📧 alim.samira2002@gmail.com</span>
+                <span>🔗 <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" style="color: inherit;">LinkedIn</a></span>
+            </div>
+
+            <div class="cta">
+                <a href="assets/cv.pdf" download class="btn-glass">Télécharger mon CV</a>
+                <a href="projets.html" class="btn-glass" style="background: white; color: var(--dark); margin-left: 10px;">Voir mes projets</a>
             </div>
         </div>
-    </header>
-
-    <main class="container">
-        <section id="td" class="section">
-            <h2 class="section-title">Travaux Dirigés</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>TD Bases de Données</h3>
-                    <p>Modélisation conceptuelle et requêtes SQL complexes.</p>
-                    <a href="#" class="link">Voir les ressources →</a>
-                </div>
-                </div>
-        </section>
-
-        <section id="crm" class="section glass-feature">
-            <h2 class="section-title">Projet Final : Système CRM</h2>
-            <div class="crm-content">
-                <div class="text">
-                    <p>Conception d'une application de gestion de la relation client adaptée aux PME.</p>
-                    <ul>
-                        <li>Analyse des besoins et UML</li>
-                        <li>Développement Backend & Frontend</li>
-                        <li>Gestion des stocks et suivi ventes</li>
-                    </ul>
-                </div>
-                </div>
-        </section>
-
-        <section id="veille" class="section">
-            <h2 class="section-title">Veille Technologique</h2>
-            <div class="veille-container">
-                <article class="veille-item">
-                    <h3>Intelligence Artificielle en Entreprise</h3>
-                    <p>Analyse des impacts de l'IA générative sur les SI modernes.</p>
-                </article>
-            </div>
-        </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 - Astagabdo Amadou Alim Samira - Portfolio MIAGE</p>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
