@@ -6,11 +6,10 @@
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;
     background: linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%);
-    background-attachment: fixed;
-    color: var(--text);
-    font-size: 0.85rem; /* Texte plus petit */
+    background-attachment: fixed; color: var(--text);
+    font-size: 0.85rem;
 }
 
 .navbar {
@@ -36,11 +35,10 @@ h1 { font-size: 1.8rem; margin: 10px 0; }
 .section-title { font-size: 1.1rem; border-left: 3px solid var(--primary); padding-left: 10px; margin-bottom: 15px; }
 .comp { font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
 
-.btn-main { background: var(--primary); color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.8rem; display: inline-block; }
+.btn-main { background: var(--primary); color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.8rem; display: inline-block; border: none; }
 .btn-sub { border: 1.5px solid var(--primary); color: var(--primary); padding: 9px 17px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.8rem; margin-left: 8px; }
-.btn-sm { background: white; color: var(--primary); padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.75rem; text-decoration: none; cursor: pointer; }
+.btn-sm { background: white; color: var(--primary); padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.75rem; text-decoration: none; cursor: pointer; margin-right: 5px; }
 
-.file-item { display: flex; justify-content: space-between; background: rgba(255,255,255,0.3); padding: 8px 12px; border-radius: 8px; }
 .preview-box { background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-top: 10px; }
 .text-center { text-align: center; }
-.file-info { font-size: 0.7rem; color: var(--primary); margin-top: 5px; font-weight: 600; }
+.icon-r { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
