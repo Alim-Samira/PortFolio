@@ -1,32 +1,32 @@
 function showPage(pageId) {
-    // 1. Cacher toutes les pages
+    // Masquer toutes les sections
     const pages = document.querySelectorAll('.page');
-    pages.forEach(page => {
-        page.classList.remove('active');
-    });
+    pages.forEach(page => page.classList.remove('active'));
 
-    // 2. Afficher la page demandée
-    const targetPage = document.getElementById(pageId);
-    targetPage.classList.add('active');
+    // Afficher la section cible
+    const target = document.getElementById(pageId);
+    if (target) {
+        target.classList.add('active');
+    }
 
-    // 3. Mettre à jour le menu (couleur bleue sur l'onglet actif)
+    // Mettre à jour l'onglet actif dans le menu
     const links = document.querySelectorAll('.nav-link');
     links.forEach(link => {
         link.classList.remove('active');
-        if(link.getAttribute('data-target') === pageId) {
+        if (link.getAttribute('data-target') === pageId) {
             link.classList.add('active');
         }
     });
 
-    // Scroll automatique vers le haut de la page
-    window.scrollTo(0, 0);
+    // Retour en haut de page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Simulation d'ajout de fichier
-document.querySelectorAll('input[type="file"]').forEach(input => {
-    input.addEventListener('change', function() {
-        if(this.files[0]) {
-            alert("Fichier sélectionné : " + this.files[0].name + ". Pour le sauvegarder réellement, il faudra le 'pusher' sur ton GitHub Assets.");
-        }
-    });
-});
+// Gestion de l'affichage du nom du fichier après "upload"
+function updateFileName(input) {
+    const status = input.parentElement.querySelector('.file-status');
+    if (input.files.length > 0) {
+        status.innerText = "Fichier prêt : " + input.files[0].name;
+        status.style.color = "#6366f1";
+    }
+}

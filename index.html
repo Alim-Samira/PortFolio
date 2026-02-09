@@ -24,15 +24,13 @@
             <div class="glass-card hero-card">
                 <span class="badge">Étudiante MIAGE</span>
                 <h1>Astagabdo Amadou Alim Samira</h1>
-                <p class="hero-desc">Future experte SI. Spécialisée en gestion de projet et développement CRM.</p>
-                
-                <div class="contact-grid">
-                    <span>📞 +33 6 99 67 38 86</span>
-                    <span>📧 alim.samira2002@gmail.com</span>
-                    <span>🔗 <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank">LinkedIn</a></span>
+                <p class="hero-desc">Future experte SI. Spécialisée en gestion de processus ERP et solutions CRM.</p>
+                <div class="contact-info">
+                    <p>📞 +33 6 99 67 38 86</p>
+                    <p>📧 alim.samira2002@gmail.com</p>
+                    <p>🔗 <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank">Mon LinkedIn</a></p>
                 </div>
-
-                <div class="cta-area">
+                <div class="cta-group">
                     <a href="assets/cv.pdf" download class="btn-glass">Télécharger CV</a>
                     <button class="btn-outline" onclick="showPage('projets')">Voir mes projets</button>
                 </div>
@@ -42,17 +40,18 @@
 
     <section id="td" class="page">
         <div class="container">
-            <h2 class="title">Travaux Dirigés</h2>
+            <h2 class="title">Mes Travaux Dirigés</h2>
             <div class="grid">
                 <div class="glass-card">
-                    <h3>Base de Données</h3>
-                    <p>Optimisation SQL et modélisation.</p>
-                    <a href="#" class="btn-sm">Ouvrir PDF</a>
+                    <h3>Bases de Données</h3>
+                    <p>Travaux sur la modélisation et l'optimisation SQL.</p>
+                    <a href="#" class="btn-sm">Consulter</a>
                 </div>
                 <div class="glass-card drop-zone">
-                    <p>Ajouter un document TD</p>
-                    <input type="file" id="file-td" hidden>
-                    <label for="file-td" class="btn-sm">Parcourir l'appareil</label>
+                    <p>Déposer un nouveau TD</p>
+                    <input type="file" id="file-td" hidden onchange="updateFileName(this)">
+                    <label for="file-td" class="btn-sm">Choisir un fichier</label>
+                    <p class="file-status"></p>
                 </div>
             </div>
         </div>
@@ -60,16 +59,17 @@
 
     <section id="projets" class="page">
         <div class="container">
-            <h2 class="title">Projet Final : CRM</h2>
+            <h2 class="title">Projet CRM : Odoo</h2>
             <div class="glass-card">
-                <div class="project-header">
-                    <h3>Système de Gestion Client</h3>
-                    <span class="tag">Projet Majeur</span>
+                <h3>Gestion de l'entreprise edu-techshop</h3>
+                <p>Mise en place complète des modules Ventes, Achats, Inventaire et Facturation.</p>
+                
+                <div class="pdf-viewer">
+                    <embed src="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="500px">
                 </div>
-                <p>Développement d'une solution complète pour PME (UML, Java/PHP, SQL).</p>
-                <div class="file-actions">
-                    <button class="btn-glass">Consulter le Rapport</button>
-                    <button class="btn-outline">Support de Soutenance</button>
+
+                <div class="cta-area" style="margin-top:20px;">
+                    <a href="assets/TP_Odoo_Samira.pdf" download class="btn-glass">Télécharger le rapport complet</a>
                 </div>
             </div>
         </div>
@@ -77,13 +77,10 @@
 
     <section id="veille" class="page">
         <div class="container">
-            <h2 class="title">Veille Technologique</h2>
-            <div class="grid">
-                <div class="glass-card">
-                    <h3>Intelligence Artificielle</h3>
-                    <p>Impact de l'IA générative dans les processus MIAGE.</p>
-                    <a href="#" class="btn-sm">Lire l'article</a>
-                </div>
+            <h2 class="title">Veille & Ressources</h2>
+            <div class="glass-card">
+                <h3>ERP & Productivité</h3>
+                <p>Analyse des différences entre produits stockables et consommables dans les systèmes de gestion modernes.</p>
             </div>
         </div>
     </section>
