@@ -1,22 +1,10 @@
 function showPage(pageId) {
-    // Masquer les sections
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.classList.remove('active'));
-
-    // Afficher la page cible
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById(pageId);
-    if (target) {
-        target.classList.add('active');
-    }
+    if (target) target.classList.add('active');
 
-    // Gérer l'état actif du menu
-    const links = document.querySelectorAll('.nav-link');
-    links.forEach(link => link.classList.remove('active'));
-    
-    // Marquer le lien actuel comme actif
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
     event.currentTarget.classList.add('active');
-
-    // Scroll vers le haut fluide
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
