@@ -37,7 +37,7 @@ body {
 .file-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .file-title { display: flex; align-items: center; font-weight: 700; }
 .icon-pdf { color: #ef4444; margin-right: 10px; font-size: 1.2rem; }
-.btn-icon { color: var(--primary); font-size: 1.1rem; margin-left: 15px; text-decoration: none; transition: 0.2s; }
+.btn-icon { color: var(--primary); font-size: 1.1rem; margin-left: 15px; text-decoration: none; }
 .preview-container { background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-top: 10px; }
 
 .btn-main { background: var(--primary); color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.8rem; display: inline-block; }

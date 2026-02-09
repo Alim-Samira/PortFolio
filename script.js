@@ -8,10 +8,3 @@ function showPage(pageId) {
     
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
-
-function showName(input, targetId) {
-    const target = document.getElementById(targetId);
-    if (input.files.length > 0) {
-        target.innerHTML = `<i class="fas fa-check"></i> Prêt : ${input.files[0].name}`;
-    }
-}
