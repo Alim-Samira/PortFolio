@@ -5,71 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Astagabdo Amadou Alim Samira</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <span class="logo">Samira MIAGE</span>
-            <ul>
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#travaux">TDs</a></li>
-                <li><a href="#cours">Cours</a></li>
-                <li><a href="#certifs">Projets</a></li>
-                <li><a href="#crm">Projet CRM</a></li>
-                <li><a href="#veille">Veille</a></li>
-            </ul>
+    <nav class="navbar">
+        <div class="logo">AAAS<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">Accueil</a></li>
+            <li><a href="#td">Travaux</a></li>
+            <li><a href="#cours">Cours</a></li>
+            <li><a href="#projets">Projets & Certifs</a></li>
+            <li><a href="#crm">Projet CRM</a></li>
+            <li><a href="#soutenance">Soutenance</a></li>
+            <li><a href="#veille">Veille</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
     </nav>
 
-    <header id="home">
-        <div class="header-content">
+    <header id="about" class="hero">
+        <div class="hero-content">
             <h1>Astagabdo Amadou Alim Samira</h1>
-            <p>Étudiante en MIAGE | Développeuse Junior</p>
-            <div class="links">
-                <a href="cv_samira_ats.pdf" class="btn" download>Mon CV (ATS)</a>
-                <a href="https://linkedin.com/in/ton-profil" target="_blank" class="btn secondary">LinkedIn</a>
+            <p class="subtitle">Étudiante en MIAGE | Future Experte SI</p>
+            <div class="cta-buttons">
+                <a href="assets/cv_ats_samira.pdf" class="btn primary" download>Télécharger CV (ATS)</a>
+                <a href="https://linkedin.com/in/votre-profil" class="btn secondary" target="_blank">LinkedIn</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section id="travaux">
-            <h2>Rubrique 1 : Travaux Dirigés</h2>
+    <main class="container">
+        <section id="td" class="section">
+            <h2 class="section-title">Travaux Dirigés</h2>
             <div class="grid">
-                <div class="card">Dossier TD 1</div>
-                <div class="card">Dossier TD 2</div>
-            </div>
-        </section>
-
-        <section id="cours" class="bg-light">
-            <h2>Rubrique 2 : Supports de Cours</h2>
-            <p>Notes structurées et ressources personnelles.</p>
-            </section>
-
-        <section id="certifs">
-            <h2>Rubrique 3 : Certifications & Projets</h2>
-            <div class="gallery">
+                <div class="card">
+                    <h3>TD Bases de Données</h3>
+                    <p>Modélisation conceptuelle et requêtes SQL complexes.</p>
+                    <a href="#" class="link">Voir les ressources →</a>
+                </div>
                 </div>
         </section>
 
-        <section id="crm" class="bg-light">
-            <h2>Rubrique 4 & 5 : Projet CRM & Soutenance</h2>
-            <div class="crm-details">
-                <p>Présentation détaillée du projet final.</p>
-                <a href="soutenance.pptx" class="btn">Télécharger le Diaporama</a>
-            </div>
+        <section id="crm" class="section glass-feature">
+            <h2 class="section-title">Projet Final : Système CRM</h2>
+            <div class="crm-content">
+                <div class="text">
+                    <p>Conception d'une application de gestion de la relation client adaptée aux PME.</p>
+                    <ul>
+                        <li>Analyse des besoins et UML</li>
+                        <li>Développement Backend & Frontend</li>
+                        <li>Gestion des stocks et suivi ventes</li>
+                    </ul>
+                </div>
+                </div>
         </section>
 
-        <section id="veille">
-            <h2>Rubrique 6 : Veille & Ressources</h2>
-            <p>Ressources complémentaires et veille technologique.</p>
+        <section id="veille" class="section">
+            <h2 class="section-title">Veille Technologique</h2>
+            <div class="veille-container">
+                <article class="veille-item">
+                    <h3>Intelligence Artificielle en Entreprise</h3>
+                    <p>Analyse des impacts de l'IA générative sur les SI modernes.</p>
+                </article>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 - Astagabdo Amadou Alim Samira - Portfolio MIAGE</p>
+        <p>&copy; 2024 - Astagabdo Amadou Alim Samira - Portfolio MIAGE</p>
     </footer>
 
     <script src="script.js"></script>
