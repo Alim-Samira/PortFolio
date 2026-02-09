@@ -1,32 +1,22 @@
 function showPage(pageId) {
-    // Masquer toutes les sections
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-
-    // Afficher la section cible
-    const target = document.getElementById(pageId);
-    if (target) {
-        target.classList.add('active');
-    }
-
-    // Mettre à jour l'onglet actif dans le menu
-    const links = document.querySelectorAll('.nav-link');
-    links.forEach(link => {
+    // Cache les pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Affiche la page sélectionnée
+    document.getElementById(pageId).classList.add('active');
+    
+    // Gère l'état actif du menu
+    document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('data-target') === pageId) {
+        if(link.textContent.toLowerCase().includes(pageId.substring(0,3))) {
             link.classList.add('active');
         }
     });
-
-    // Retour en haut de page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
 }
 
-// Gestion de l'affichage du nom du fichier après "upload"
-function updateFileName(input) {
-    const status = input.parentElement.querySelector('.file-status');
-    if (input.files.length > 0) {
-        status.innerText = "Fichier prêt : " + input.files[0].name;
-        status.style.color = "#6366f1";
+function updateStatus(input) {
+    const parent = input.parentElement;
+    if(input.files.length > 0) {
+        parent.querySelector('label').textContent = "Fichier : " + input.files[0].name;
     }
 }
