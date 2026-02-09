@@ -6,17 +6,18 @@
     <title>Samira Alim | Portfolio MIAGE</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">SA<span>.</span></div>
+        <div class="logo">SAMIRA<span>.</span></div>
         <ul class="menu">
             <li><a href="#" class="nav-link active" onclick="showPage('home')">Moi</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('travaux')">Rubrique 1 & 2</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('certifs')">Rubrique 3</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('projet-final')">Rubrique 4 & 5</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('veille')">Rubrique 6</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('travaux')">Travaux & Cours</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('certifs')">Certifications</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('projet')">Projet & Soutenance</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('veille')">Veille</a></li>
         </ul>
     </nav>
 
@@ -25,65 +26,80 @@
             <div class="glass-card hero">
                 <span class="badge">Étudiante MIAGE</span>
                 <h1>Astagabdo Amadou Alim Samira</h1>
-                <p>📞 +33 6 99 67 38 86 | 📧 alim.samira2002@gmail.com</p>
+                <div class="contact-links">
+                    <p><i class="fas fa-phone"></i> +33 6 99 67 38 86</p>
+                    <p><i class="fas fa-envelope"></i> alim.samira2002@gmail.com</p>
+                </div>
                 <div class="cta-area">
-                    <a href="assets/CV_Samira_Alim.pdf" download class="btn-glass">CV Format ATS</a>
-                    <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" class="btn-outline">LinkedIn</a>
+                    <a href="assets/cv.pdf" download class="btn-glass"><i class="fas fa-file-download"></i> CV Format ATS</a>
+                    <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
         </section>
 
         <section id="travaux" class="page">
-            <h2 class="title">Productions Académiques & Cours</h2>
+            <h2 class="title">Productions & Supports de Cours</h2>
             <div class="grid">
                 <div class="glass-card">
-                    <h3>Travaux Dirigés</h3>
+                    <i class="fas fa-folder-open icon-main"></i>
+                    <h3>Rubrique 1 : Travaux Dirigés</h3>
                     <p>Dossiers complets réalisés en classe.</p>
-                    <input type="file" id="file-td" hidden onchange="updateStatus(this)">
-                    <label for="file-td" class="btn-sm">Déposer un dossier</label>
+                    <div class="file-zone" id="drop-zone-td">
+                        <input type="file" id="up-td" hidden onchange="handleFile(this, 'status-td')">
+                        <label for="up-td" class="btn-sm"><i class="fas fa-plus"></i> Déposer un travail</label>
+                        <p id="status-td" class="file-name"></p>
+                    </div>
                 </div>
                 <div class="glass-card">
-                    <h3>Supports de Cours</h3>
+                    <i class="fas fa-book icon-main"></i>
+                    <h3>Rubrique 2 : Supports de Cours</h3>
                     <p>Notes structurées et ressources personnelles.</p>
-                    <button class="btn-sm">Consulter mes notes</button>
+                    <a href="assets/notes_miage.pdf" class="btn-sm"><i class="fas fa-eye"></i> Visualiser mes notes</a>
                 </div>
             </div>
         </section>
 
         <section id="certifs" class="page">
-            <h2 class="title">Certifications & Projets</h2>
+            <h2 class="title">Rubrique 3 : Certifications & Projets</h2>
             <div class="grid">
-                <div class="glass-card cert-item">
-                    <div class="icon">📜</div>
+                <div class="glass-card">
+                    <i class="fas fa-certificate icon-main"></i>
                     <h3>Attestation Odoo</h3>
-                    <p>Format PDF lisible.</p>
-                    <a href="#" class="btn-sm">Voir l'attestation</a>
+                    <p>Certification obtenue lors du TP edu-techshop.</p>
+                    <a href="assets/certificat.pdf" target="_blank" class="btn-sm"><i class="fas fa-external-link-alt"></i> Voir le PDF</a>
                 </div>
             </div>
         </section>
 
-        <section id="projet-final" class="page">
-            <h2 class="title">Projet Final : CRM Odoo (edu-techshop)</h2>
+        <section id="projet" class="page">
+            <h2 class="title">Rubrique 4 & 5 : Projet CRM & Soutenance</h2>
             <div class="glass-card">
-                <h3>Documentation Technique</h3>
+                <div class="project-header">
+                    <h3>Projet Final : ERP Odoo (edu-techshop)</h3>
+                    <a href="assets/TP_Odoo_Samira.pdf" download class="btn-sm"><i class="fas fa-download"></i> Télécharger le rapport</a>
+                </div>
                 <p>Mise en place des modules Ventes, Achats et Inventaire.</p>
                 <div class="pdf-viewer">
                     <object data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="500px">
-                        <p>Prévisualisation indisponible. <a href="assets/TP_Odoo_Samira.pdf">Ouvrir le PDF</a></p>
+                        <p>Aperçu indisponible. <a href="assets/TP_Odoo_Samira.pdf">Ouvrir le fichier</a></p>
                     </object>
                 </div>
-                <div class="cta-area" style="margin-top:20px;">
-                    <a href="assets/Soutenance_Samira.pptx" download class="btn-glass">Télécharger le Diaporama</a>
+                <div class="soutenance-box">
+                    <h3><i class="fas fa-desktop"></i> Diaporama de Soutenance</h3>
+                    <a href="assets/soutenance.pptx" class="btn-glass"><i class="fas fa-file-powerpoint"></i> Télécharger la présentation</a>
                 </div>
             </div>
         </section>
 
         <section id="veille" class="page">
-            <h2 class="title">Veille & Ressources</h2>
+            <h2 class="title">Rubrique 6 : Veille & Ressources</h2>
             <div class="glass-card">
-                <h3>Analyse ERP</h3>
-                <p>Différence entre produits stockables et consommables.</p>
-                <button class="btn-sm">Lire la veille</button>
+                <i class="fas fa-search icon-main"></i>
+                <h3>Analyse : Stockable vs Consommable</h3>
+                <p>Différenciation technique dans Odoo : suivi des quantités en temps réel vs produits toujours disponibles.</p>
+                <div class="resource-link">
+                    <a href="https://www.odoo.com/documentation/17.0/fr/applications/inventory_and_mrp/inventory/management/products/strategies.html" target="_blank">Documentation Odoo Officielle →</a>
+                </div>
             </div>
         </section>
     </main>

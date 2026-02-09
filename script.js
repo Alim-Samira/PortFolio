@@ -1,22 +1,22 @@
 function showPage(pageId) {
-    // Cache les pages
+    // 1. Cacher les pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Affiche la page sélectionnée
+    // 2. Afficher la cible
     document.getElementById(pageId).classList.add('active');
     
-    // Gère l'état actif du menu
+    // 3. Update menu
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if(link.textContent.toLowerCase().includes(pageId.substring(0,3))) {
-            link.classList.add('active');
-        }
     });
-    window.scrollTo(0, 0);
+    event.currentTarget.classList.add('active');
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function updateStatus(input) {
-    const parent = input.parentElement;
+// Gérer l'affichage du nom du fichier quand on "ajoute" un document
+function handleFile(input, statusId) {
+    const status = document.getElementById(statusId);
     if(input.files.length > 0) {
-        parent.querySelector('label').textContent = "Fichier : " + input.files[0].name;
+        status.innerHTML = `<i class="fas fa-check-circle"></i> Fichier chargé : ${input.files[0].name}`;
     }
 }
