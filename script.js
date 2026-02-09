@@ -1,22 +1,28 @@
 function showPage(pageId) {
-    // 1. Cacher les pages
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // 2. Afficher la cible
-    document.getElementById(pageId).classList.add('active');
+    // Masquer les sections
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.classList.remove('active'));
+
+    // Afficher la page cible
+    const target = document.getElementById(pageId);
+    if (target) {
+        target.classList.add('active');
+    }
+
+    // Gérer l'état actif du menu
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach(link => link.classList.remove('active'));
     
-    // 3. Update menu
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-    });
+    // Marquer le lien actuel comme actif
     event.currentTarget.classList.add('active');
-    
+
+    // Scroll vers le haut fluide
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// Gérer l'affichage du nom du fichier quand on "ajoute" un document
-function handleFile(input, statusId) {
-    const status = document.getElementById(statusId);
-    if(input.files.length > 0) {
-        status.innerHTML = `<i class="fas fa-check-circle"></i> Fichier chargé : ${input.files[0].name}`;
+function showName(input, targetId) {
+    const target = document.getElementById(targetId);
+    if (input.files.length > 0) {
+        target.innerHTML = `<i class="fas fa-check"></i> Prêt : ${input.files[0].name}`;
     }
 }
