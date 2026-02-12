@@ -1,4 +1,4 @@
-// Page Navigation with Smooth Transitions
+// Navigation with Smooth Transitions
 function showPage(pageId) {
     // Remove active class from all pages with fade out effect
     document.querySelectorAll('.page').forEach(p => {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     });
 
-    // Add loading animation for page load
+    // Add loading animation for  loading
     window.addEventListener('load', () => {
         document.body.style.opacity = '0';
         setTimeout(() => {
