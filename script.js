@@ -1,18 +1,25 @@
-// Navigation with Smooth Transitions
-function showPage(pageId) {
-    // Remove active class from all pages with fade out effect
+// ═══════════════════════════════════════════════════════════════
+// Portfolio — script.js
+//  FIX triple-click : showPage() reçoit l'élément directement (this)
+//    au lieu d'utiliser event.currentTarget qui échoue si l'event
+//    n'est pas disponible lors de l'exécution différée.
+//  README chargé et rendu inline dans #readme-inline
+// ═══════════════════════════════════════════════════════════════
+
+// ── Navigation ─────────────────────────────────────────────────
+// IMPORTANT : les liens appellent showPage('id', this)
+// "this" = l'élément <a> cliqué, transmis directement → fiable
+function showPage(pageId, clickedLink) {
+    // Fade out la page active
     document.querySelectorAll('.page').forEach(p => {
         if (p.classList.contains('active')) {
             p.style.opacity = '0';
             p.style.transform = 'translateY(20px) scale(0.98)';
-            
-            setTimeout(() => {
-                p.classList.remove('active');
-            }, 300);
+            setTimeout(() => { p.classList.remove('active'); }, 300);
         }
     });
 
-    // Activate target page with fade in effect
+    // Fade in la page cible
     setTimeout(() => {
         const target = document.getElementById(pageId);
         if (target) {
@@ -22,53 +29,92 @@ function showPage(pageId) {
                 target.style.transform = 'translateY(0) scale(1)';
             }, 50);
         }
+        // Charger le README quand on arrive sur la section CRM
+        if (pageId === 'crm') loadReadme();
     }, 300);
 
-    // Update navigation active states
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    if (event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
-    }
+    // Mettre à jour le lien actif — utilise clickedLink (this) directement
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    if (clickedLink) clickedLink.classList.add('active');
 
-    // Smooth scroll to top
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Add hover effects to glass cards
+// ── README inline ───────────────────────────────────────────────
+// Lit assets/README.md et l'affiche directement dans #readme-inline
+let readmeLoaded = false;
+async function loadReadme() {
+    if (readmeLoaded) return;
+    const box = document.getElementById('readme-inline');
+    if (!box) return;
+    try {
+        const res = await fetch('assets/README.md');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const md = await res.text();
+        box.innerHTML = '<div class="readme-body">' + renderMarkdown(md) + '</div>';
+        readmeLoaded = true;
+    } catch(e) {
+        box.innerHTML = `
+          <div class="readme-error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Impossible de charger le README.<br>
+               Vérifie que <code>assets/README.md</code> existe dans le repo.</p>
+            <a href="assets/README.md" download="AAAS_CRM_README.md" class="btn-sm" style="margin-top:10px;display:inline-block">
+              <i class="fas fa-download"></i> Télécharger le README
+            </a>
+          </div>`;
+    }
+}
+
+// Rendu Markdown → HTML (sans dépendance)
+function renderMarkdown(md) {
+    return md
+        // Échapper HTML
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        // Blocs de code (avant tout)
+        .replace(/```[\w]*\n?([\s\S]*?)```/g,
+            '<pre class="md-pre"><code>$1</code></pre>')
+        // Titres
+        .replace(/^### (.+)$/gm, '<h3 class="md-h3">$1</h3>')
+        .replace(/^## (.+)$/gm,  '<h2 class="md-h2">$1</h2>')
+        .replace(/^# (.+)$/gm,   '<h1 class="md-h1">$1</h1>')
+        // Gras + italique
+        .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g,    '<em>$1</em>')
+        // Code inline
+        .replace(/`([^`\n]+)`/g,
+            '<code class="md-code">$1</code>')
+        // Liens
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g,
+            '<a href="$2" target="_blank" rel="noopener" class="md-link">$1</a>')
+        // HR
+        .replace(/^---$/gm, '<hr class="md-hr">')
+        // Listes
+        .replace(/^[\*\-] (.+)$/gm, '<li>$1</li>')
+        .replace(/(<li>[\s\S]*?<\/li>)/g, '<ul class="md-ul">$1</ul>')
+        // Lignes vides → séparateur de paragraphe
+        .replace(/\n{2,}/g, '\n')
+        // Lignes simples non-balises
+        .replace(/^(?!<[a-z])(.*\S.*)$/gm, '<p class="md-p">$1</p>');
+}
+
+// ── Hover effects sur glass cards ──────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     const glassCards = document.querySelectorAll('.glass-card');
-    
     glassCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
+        card.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-8px)'; });
+        card.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0)'; });
     });
 
-    // Add parallax effect to background orbs
+    // Parallax orbs
     document.addEventListener('mousemove', (e) => {
         const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
         const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-        
         document.body.style.setProperty('--mouse-x', `${moveX}px`);
         document.body.style.setProperty('--mouse-y', `${moveY}px`);
     });
 
-    // Animate elements on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -76,9 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    // Observe all glass cards for scroll animations
     document.querySelectorAll('.glass-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
@@ -86,46 +131,36 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 
-    // Add ripple effect to buttons
-    const buttons = document.querySelectorAll('.btn-main, .btn-sub, .btn-sm, .btn-icon');
-    
+    // Ripple effect
+    const buttons = document.querySelectorAll('.btn-main, .btn-sub, .btn-sm, .btn-icon, .btn-crm');
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
             const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
+            ripple.style.cssText = `
+                width:${size}px;height:${size}px;
+                left:${e.clientX-rect.left-size/2}px;
+                top:${e.clientY-rect.top-size/2}px`;
             ripple.classList.add('ripple');
-            
             this.appendChild(ripple);
-            
             setTimeout(() => ripple.remove(), 600);
         });
     });
 
-    // Enhance navbar on scroll
-    let lastScroll = 0;
+    // Navbar scroll
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
         const navbar = document.querySelector('.navbar');
-        
-        if (currentScroll > 100) {
+        if (window.pageYOffset > 100) {
             navbar.style.padding = '0.6rem 1.5rem';
-            navbar.style.boxShadow = '0 8px 32px rgba(79, 70, 229, 0.16), 0 0 30px rgba(255, 193, 227, 0.4)';
+            navbar.style.boxShadow = '0 8px 32px rgba(79,70,229,0.16), 0 0 30px rgba(255,193,227,0.4)';
         } else {
             navbar.style.padding = '0.8rem 1.5rem';
-            navbar.style.boxShadow = '0 8px 32px rgba(79, 70, 229, 0.16)';
+            navbar.style.boxShadow = '0 8px 32px rgba(79,70,229,0.16)';
         }
-        
-        lastScroll = currentScroll;
     });
 
-    // Add loading animation for  loading
+    // Fade in au chargement
     window.addEventListener('load', () => {
         document.body.style.opacity = '0';
         setTimeout(() => {
@@ -134,32 +169,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
 
-    // Enhance preview containers
-    const previews = document.querySelectorAll('.preview-container');
-    previews.forEach(preview => {
-        preview.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.02)';
-        });
-        
-        preview.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
+    // PDF mobile : masquer <object> sur mobile, montrer le fallback
+    if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
+        document.querySelectorAll('.pdf-embed').forEach(el => { el.style.display = 'none'; });
+        document.querySelectorAll('.pdf-fallback').forEach(el => { el.style.display = 'flex'; });
+    } else {
+        document.querySelectorAll('.pdf-fallback').forEach(el => { el.style.display = 'none'; });
+    }
+
+    // Hover preview containers
+    document.querySelectorAll('.preview-container').forEach(preview => {
+        preview.addEventListener('mouseenter', function() { this.style.transform = 'scale(1.02)'; });
+        preview.addEventListener('mouseleave', function() { this.style.transform = 'scale(1)'; });
     });
 
-    // Add smooth transitions to certification items
-    const certItems = document.querySelectorAll('.cert-item');
-    certItems.forEach((item, index) => {
+    document.querySelectorAll('.cert-item').forEach((item, index) => {
         item.style.animationDelay = `${index * 0.1}s`;
     });
 });
 
-// Console styling
-console.log(
-    '%c Portfolio - Alim Samira ',
-    'background: linear-gradient(135deg, #4f46e5, #ffc1e3); color: white; padding: 12px 20px; border-radius: 8px; font-size: 16px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.2);'
-);
-
-console.log(
-    '%c Glassmorphism Design with Pink Gradient ✨',
-    'color: #ffc1e3; font-size: 12px; font-weight: 600;'
-);
+// Console
+console.log('%c Portfolio - Alim Samira ', 'background:linear-gradient(135deg,#4f46e5,#ffc1e3);color:white;padding:12px 20px;border-radius:8px;font-size:16px;font-weight:bold;');
+console.log('%c Glassmorphism Design with Pink Gradient ✨', 'color:#ffc1e3;font-size:12px;font-weight:600;');
