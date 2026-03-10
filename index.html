@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      /* Styles pour l'affichage des PDF dynamiques */
+      /* Styles pour l'affichage des PDF et Images dynamiques */
       .pdf-collapsible {
         display: none;
         overflow: hidden;
@@ -23,6 +23,26 @@
         background: rgba(79, 70, 229, 0.1) !important;
         border: 1px solid rgba(79, 70, 229, 0.3) !important;
         margin-bottom: 20px;
+      }
+      .img-card-inner {
+        background: rgba(255,255,255,0.05); 
+        padding: 15px; 
+        text-align: center; 
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: transform 0.2s;
+      }
+      .img-card-inner:hover {
+        transform: translateY(-5px);
+        border-color: rgba(99,102,241,0.4);
+      }
+      .img-preview {
+        width: 100%; 
+        height: 150px; 
+        object-fit: cover; 
+        border-radius: 8px; 
+        cursor: pointer; 
+        margin-bottom: 12px;
       }
     </style>
 </head>
@@ -67,7 +87,7 @@
                         <a href="assets/TP_Odoo_Samira.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                <p class="comp">Gestion complète du cycle : Achats, Stocks et Ventes[cite: 1236, 1245].</p>
+                <p class="comp">Gestion complète du cycle : Achats, Stocks et Ventes.</p>
                 <div id="prev-odoo" class="pdf-collapsible">
                     <div class="preview-container">
                         <object data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
@@ -202,6 +222,38 @@
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
+                        <i class="fas fa-images" style="color: #10b981;"></i>
+                        <span>Images du Projet (MCD, ERD, UML)</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-icon" onclick="togglePreview('prev-images', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <p class="comp">Modélisations conceptuelles et diagrammes techniques.</p>
+                <div id="prev-images" class="pdf-collapsible">
+                    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 10px 0;">
+                        <div class="img-card-inner">
+                            <h4 style="font-size: 0.85rem; margin-bottom: 8px;">MCD</h4>
+                            <img src="assets/MCD (Modèle Conceptuel de Données).jpg" class="img-preview" alt="MCD" onclick="window.open(this.src)">
+                            <a href="assets/MCD (Modèle Conceptuel de Données).jpg" download class="btn-sm"><i class="fas fa-download"></i></a>
+                        </div>
+                        <div class="img-card-inner">
+                            <h4 style="font-size: 0.85rem; margin-bottom: 8px;">ER Diagram</h4>
+                            <img src="assets/ER Diagram.jpg" class="img-preview" alt="ERD" onclick="window.open(this.src)">
+                            <a href="assets/ER Diagram.jpg" download class="btn-sm"><i class="fas fa-download"></i></a>
+                        </div>
+                        <div class="img-card-inner">
+                            <h4 style="font-size: 0.85rem; margin-bottom: 8px;">UML</h4>
+                            <img src="assets/Diagramme de Classes UML.jpg" class="img-preview" alt="UML" onclick="window.open(this.src)">
+                            <a href="assets/Diagramme de Classes UML.jpg" download class="btn-sm"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="file-header">
+                    <div class="file-title">
                         <i class="fas fa-file-powerpoint icon-pptx" style="color: #d24726;"></i>
                         <span>Présentation du projet — Soutenance</span>
                     </div>
@@ -245,10 +297,10 @@
             <div class="glass-card">
                 <h4>Stockable vs Consommable dans Odoo</h4>
                 <p style="margin-top: 15px;">
-                    <strong>Produit stockable :</strong> Odoo suit les quantités en temps réel. [cite: 1230, 1255]
+                    <strong>Produit stockable :</strong> Odoo suit les quantités en temps réel.
                 </p>
                 <p>
-                    <strong>Produit consommable :</strong> Considéré comme toujours disponible, sans suivi strict de l'inventaire. [cite: 1232, 1233]
+                    <strong>Produit consommable :</strong> Considéré comme toujours disponible, sans suivi strict de l'inventaire.
                 </p>
             </div>
         </section>
@@ -262,6 +314,14 @@
         const isHidden = window.getComputedStyle(el).display === "none";
         el.style.display = isHidden ? "block" : "none";
         btn.classList.toggle('active');
+      }
+
+      // showPage 
+      function showPage(pageId, navEl) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        navEl.classList.add('active');
       }
     </script>
 </body>
