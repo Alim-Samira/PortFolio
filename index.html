@@ -8,21 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      /* Preview toggle button active state */
-      .btn-icon.active {
-        background: rgba(99,102,241,0.15) !important;
-        color: #818cf8 !important;
-        border-color: rgba(99,102,241,0.3) !important;
-      }
-      /* Smooth open/close animation */
+      /* Styles pour l'affichage des PDF dynamiques */
       .pdf-collapsible {
+        display: none;
         overflow: hidden;
         transition: all 0.3s ease;
-        animation: fadeIn 0.3s ease;
+        margin-top: 15px;
       }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-6px); }
-        to   { opacity: 1; transform: translateY(0); }
+      .btn-icon.active {
+        background: rgba(99,102,241,0.2) !important;
+        color: #4f46e5 !important;
       }
     </style>
 </head>
@@ -43,7 +38,6 @@
 
     <main class="container">
 
-        <!-- ACCUEIL -->
         <section id="about" class="page active">
             <div class="glass-card hero">
                 <span class="badge">Étudiante MIAGE</span>
@@ -52,194 +46,119 @@
                 <div class="cta-group">
                     <a href="assets/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Alternance</a>
                     <a href="assets/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Stage</a>
-                    <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" class="btn-sub"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" rel="noopener" class="btn-sub"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
         </section>
 
-        <!-- TRAVAUX -->
         <section id="travaux" class="page">
             <h2 class="section-title">Travaux Dirigés</h2>
 
-            <!-- TP Odoo -->
             <div class="glass-card">
                 <div class="file-header">
-                    <div class="file-title">
-                        <i class="fas fa-file-pdf icon-pdf"></i>
-                        <span>TP Odoo - Gestion d'entreprise edu-techshop</span>
-                    </div>
+                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>TP Odoo - edu-techshop</span></div>
                     <div class="file-actions">
-                        <!-- Eye icon toggles the preview -->
-                        <button class="btn-icon" data-preview="prev-odoo"
-                            onclick="togglePreview('prev-odoo')" title="Voir le document">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <a href="assets/TP_Odoo_Samira.pdf" download class="btn-icon" title="Télécharger">
-                            <i class="fas fa-download"></i>
-                        </a>
+                        <button class="btn-icon" onclick="togglePreview('prev-odoo', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                        <a href="assets/TP_Odoo_Samira.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                <p class="comp">Gestion complète du cycle : Achats, Stocks, Ventes et Facturation.</p>
-                <!-- Preview hidden by default — shown on eye click -->
-                <div id="prev-odoo" class="pdf-collapsible" style="display:none;">
+                <p class="comp">Gestion complète du cycle : Achats, Stocks et Ventes[cite: 618].</p>
+                <div id="prev-odoo" class="pdf-collapsible">
                     <div class="preview-container">
-                        <div class="pdf-fallback">
-                            <i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i>
-                            <p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p>
-                            <a href="assets/TP_Odoo_Samira.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a>
-                        </div>
-                        <object class="pdf-embed" data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
-                            <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="450px" style="border:none;"></iframe>
+                        <object data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
+                            <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="450px"></iframe>
                         </object>
                     </div>
                 </div>
             </div>
 
-            <!-- TP HubSpot -->
             <div class="glass-card">
                 <div class="file-header">
-                    <div class="file-title">
-                        <i class="fas fa-file-pdf icon-pdf"></i>
-                        <span>TP Découverte HubSpot</span>
-                    </div>
+                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>TP Découverte HubSpot</span></div>
                     <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-hubspot"
-                            onclick="togglePreview('prev-hubspot')" title="Voir le document">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <a href="assets/TP_Découverte_HubSpot_.pdf" download class="btn-icon" title="Télécharger">
-                            <i class="fas fa-download"></i>
-                        </a>
+                        <button class="btn-icon" onclick="togglePreview('prev-hubspot', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                        <a href="assets/TP_Découverte_HubSpot_.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                <p class="comp">Exercices pratiques et configuration sur HubSpot CRM.</p>
-                <div id="prev-hubspot" class="pdf-collapsible" style="display:none;">
+                <p class="comp">Mise en pratique sur le CRM SaaS HubSpot.</p>
+                <div id="prev-hubspot" class="pdf-collapsible">
                     <div class="preview-container">
-                        <div class="pdf-fallback">
-                            <i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i>
-                            <p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p>
-                            <a href="assets/TP_Découverte_HubSpot_.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a>
-                        </div>
-                        <object class="pdf-embed" data="assets/TP_Découverte_HubSpot_.pdf" type="application/pdf" width="100%" height="450px">
-                            <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="450px" style="border:none;"></iframe>
+                        <object data="assets/TP_Découverte_HubSpot_.pdf" type="application/pdf" width="100%" height="450px">
+                            <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="450px"></iframe>
                         </object>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- COURS -->
         <section id="cours" class="page">
             <h2 class="section-title">Supports de Cours</h2>
+            <div class="grid">
+                
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Introduction au CRM</span></div>
+                        <div class="file-actions">
+                            <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <p class="comp">Concepts fondamentaux et enjeux.</p>
+                </div>
 
-            <!-- Macro: each course card follows the same pattern -->
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Pipeline vs Funnel</span></div>
+                        <div class="file-actions">
+                            <a href="assets/3- pipeline vs funnel.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <p class="comp">Analyse des tunnels de conversion.</p>
+                </div>
 
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Introduction au CRM</span></div>
-                    <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-crm1" onclick="togglePreview('prev-crm1')" title="Voir le document"><i class="fas fa-eye"></i></button>
-                        <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Support HubSpot</span></div>
+                        <div class="file-actions">
+                            <a href="assets/8- hubspot.docx.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                        </div>
                     </div>
+                    <p class="comp">Plateforme CRM et outils marketing.</p>
                 </div>
-                <p class="comp">Concepts fondamentaux et enjeux de la Relation Client.</p>
-                <div id="prev-crm1" class="pdf-collapsible" style="display:none;">
-                    <div class="preview-container">
-                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                        <object class="pdf-embed" data="assets/Copie de 1- CRM version Etudiant.docx.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/Copie de 1- CRM version Etudiant.docx.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
-                    </div>
-                </div>
-            </div>
 
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Support de cours : HubSpot</span></div>
-                    <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-hs" onclick="togglePreview('prev-hs')" title="Voir le document"><i class="fas fa-eye"></i></button>
-                        <a href="assets/8- hubspot.docx.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Lexique Technique</span></div>
+                        <div class="file-actions">
+                            <a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                        </div>
                     </div>
+                    <p class="comp">Terminologie métier SI.</p>
                 </div>
-                <p class="comp">Découverte et prise en main de la plateforme CRM HubSpot.</p>
-                <div id="prev-hs" class="pdf-collapsible" style="display:none;">
-                    <div class="preview-container">
-                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/8- hubspot.docx.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                        <object class="pdf-embed" data="assets/8- hubspot.docx.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/8- hubspot.docx.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
-                    </div>
-                </div>
-            </div>
 
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Lexique des Termes Techniques CRM</span></div>
-                    <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-lex" onclick="togglePreview('prev-lex')" title="Voir le document"><i class="fas fa-eye"></i></button>
-                        <a href="assets/2- termes techniques CRM version Etudiant.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>CRM vs PGI</span></div>
+                        <div class="file-actions">
+                            <a href="assets/CRM VS PGI VERSION ETUD.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                        </div>
                     </div>
+                    <p class="comp">Étude comparative SI.</p>
                 </div>
-                <p class="comp">Vocabulaire métier et définitions clés du secteur.</p>
-                <div id="prev-lex" class="pdf-collapsible" style="display:none;">
-                    <div class="preview-container">
-                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                        <object class="pdf-embed" data="assets/2- termes techniques CRM version Etudiant.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/2- termes techniques CRM version Etudiant.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
-                    </div>
-                </div>
-            </div>
 
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Pipeline vs Funnel de Vente</span></div>
-                    <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-pipe" onclick="togglePreview('prev-pipe')" title="Voir le document"><i class="fas fa-eye"></i></button>
-                        <a href="assets/3- pipeline vs funnel.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Com. Digitale</span></div>
+                        <div class="file-actions">
+                            <a href="assets/Com_Digitale_Samira.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                        </div>
                     </div>
-                </div>
-                <p class="comp">Analyse des processus commerciaux et tunnels de conversion.</p>
-                <div id="prev-pipe" class="pdf-collapsible" style="display:none;">
-                    <div class="preview-container">
-                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/3- pipeline vs funnel.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                        <object class="pdf-embed" data="assets/3- pipeline vs funnel.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/3- pipeline vs funnel.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>CRM vs PGI (ERP)</span></div>
-                    <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-erp" onclick="togglePreview('prev-erp')" title="Voir le document"><i class="fas fa-eye"></i></button>
-                        <a href="assets/CRM VS PGI VERSION ETUD.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
-                    </div>
-                </div>
-                <p class="comp">Comparaison entre les systèmes CRM et les Progiciels de Gestion Intégrés.</p>
-                <div id="prev-erp" class="pdf-collapsible" style="display:none;">
-                    <div class="preview-container">
-                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/CRM VS PGI VERSION ETUD.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                        <object class="pdf-embed" data="assets/CRM VS PGI VERSION ETUD.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/CRM VS PGI VERSION ETUD.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Communication Digitale - Samira</span></div>
-                    <div class="file-actions">
-                        <button class="btn-icon" data-preview="prev-com" onclick="togglePreview('prev-com')" title="Voir le document"><i class="fas fa-eye"></i></button>
-                        <a href="assets/Com_Digitale_Samira.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
-                    </div>
-                </div>
-                <p class="comp">Stratégie de communication et présence numérique.</p>
-                <div id="prev-com" class="pdf-collapsible" style="display:none;">
-                    <div class="preview-container">
-                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/Com_Digitale_Samira.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                        <object class="pdf-embed" data="assets/Com_Digitale_Samira.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/Com_Digitale_Samira.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
-                    </div>
+                    <p class="comp">Stratégie numérique.</p>
                 </div>
             </div>
         </section>
 
-        <!-- CERTIFS -->
         <section id="certifs" class="page">
-            <h2 class="section-title">Projets & Certifications</h2>
+            <h2 class="section-title">Certifications</h2>
             <div class="glass-card">
                 <div class="cert-item">
                     <i class="fas fa-certificate"></i>
@@ -249,228 +168,52 @@
             </div>
         </section>
 
-        <!-- PROJET CRM -->
         <section id="crm" class="page">
-            <h2 class="section-title">Projet CRM</h2>
-
-            <!-- Hero -->
-            <div class="glass-card crm-hero">
-                <div class="crm-top">
-                    <div class="crm-monogram">A</div>
-                    <div>
-                        <h3 class="crm-title">AAAS CRM</h3>
-                        <p class="crm-subtitle">Système de Gestion de la Relation Client · SaaS Full Stack</p>
-                    </div>
-                </div>
-                <div class="crm-tags">
-                    <span class="crm-tag">Next.js 14</span>
-                    <span class="crm-tag">Supabase</span>
-                    <span class="crm-tag">PostgreSQL + RLS</span>
-                    <span class="crm-tag">Brevo</span>
-                    <span class="crm-tag">Vercel</span>
-                    <span class="crm-tag">TypeScript</span>
-                    <span class="crm-tag">Tailwind CSS</span>
-                    <span class="crm-tag">RBAC 4 rôles</span>
-                </div>
-                <p class="crm-desc">
-                    Application CRM SaaS complète développée dans le cadre du cours de Communication Digitale.
-                    Pipeline Kanban 6 étapes, gestion des contacts & entreprises, authentification RBAC (4 rôles),
-                    dashboard analytique Recharts et automatisation email via Brevo. CI/CD automatique via Vercel + GitHub.
-                </p>
-                <div class="crm-btns">
-                    <a href="https://github.com/Alim-Samira/aaas-crm" target="_blank" rel="noopener" class="btn-crm btn-ghost">
-                        <i class="fab fa-github"></i> Code source
-                    </a>
-                    <!-- ✅ LIVE DEMO — replace URL with your Vercel domain -->
-                    <a href="https://aaas-crm.vercel.app" target="_blank" rel="noopener" class="btn-crm btn-primary">
-                        <i class="fas fa-rocket"></i> Voir la démo live
-                    </a>
-                </div>
-            </div>
-
-            <!-- PPTX card — single eye + single download icon -->
+            <h2 class="section-title">AAAS CRM — Documentation</h2>
             <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title">
-                        <i class="fas fa-file-powerpoint icon-pptx"></i>
-                        <span>Présentation du projet — Soutenance</span>
-                    </div>
-                    <div class="file-actions">
-                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/public/AAAS_CRM_ALIM_SAMIRA.pptx"
-                           target="_blank" rel="noopener"
-                           class="btn-icon" title="Visualiser la présentation">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx"
-                           download="AAAS_CRM_Presentation_AlimSamira.pptx"
-                           class="btn-icon" title="Télécharger">
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
+                <div id="readme-inline">
+                    <p style="text-align:center; padding: 20px;">Chargement de la documentation technique...</p>
                 </div>
-                <p class="comp">Slides de soutenance · 8 diapositives · Stack SaaS</p>
-            </div>
-
-            <!-- README card -->
-            <div class="glass-card">
-                <div class="file-header">
-                    <div class="file-title">
-                        <i class="fas fa-book-open icon-readme"></i>
-                        <span>Documentation technique — README</span>
-                    </div>
-                    <div class="file-actions">
-                        <a href="assets/README.md" download="AAAS_CRM_README.md" class="btn-icon" title="Télécharger">
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
+                <div class="cta-group" style="margin-top:20px; justify-content: center;">
+                    <a href="https://aaas-crm.vercel.app" target="_blank" class="btn-main"><i class="fas fa-rocket"></i> Démo Live</a>
+                    <a href="https://github.com/Alim-Samira/aaas-crm" target="_blank" class="btn-sub"><i class="fab fa-github"></i> Code Source</a>
                 </div>
-                <p class="comp">Stack · Architecture UML · Installation · Déploiement · RBAC</p>
-                <div id="readme-inline" class="readme-inline">
-                    <div class="readme-spinner">
-                        <i class="fas fa-circle-notch fa-spin"></i>
-                        <span>Chargement de la documentation…</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modules -->
-            <div class="crm-modules-grid">
-                <div class="crm-module"><span>🔐</span><div><strong>Auth RBAC</strong><small>4 rôles · JWT</small></div></div>
-                <div class="crm-module"><span>🎯</span><div><strong>Pipeline Kanban</strong><small>6 étapes</small></div></div>
-                <div class="crm-module"><span>👤</span><div><strong>Contacts</strong><small>CRUD · Recherche</small></div></div>
-                <div class="crm-module"><span>🏢</span><div><strong>Entreprises</strong><small>Annuaire</small></div></div>
-                <div class="crm-module"><span>✅</span><div><strong>Tâches</strong><small>Kanban · Échéances</small></div></div>
-                <div class="crm-module"><span>📊</span><div><strong>Dashboard</strong><small>KPIs · Recharts</small></div></div>
-                <div class="crm-module"><span>📧</span><div><strong>Email Brevo</strong><small>Templates</small></div></div>
-                <div class="crm-module"><span>⚙️</span><div><strong>Paramètres</strong><small>Rôles · Perms</small></div></div>
             </div>
         </section>
 
-        <!-- SOUTENANCE -->
         <section id="soutenance" class="page">
             <h2 class="section-title">Soutenance</h2>
             <div class="glass-card text-center">
-                <i class="fas fa-file-powerpoint fa-3x" style="color: #d24726; margin-bottom: 15px;"></i>
-                <br>
-                <a href="assets/Soutenance_Samira.pptx" download class="btn-main">Télécharger le support</a>
+                <i class="fas fa-file-powerpoint fa-3x" style="color: #d24726; margin-bottom: 20px;"></i>
+                <p class="comp">Support de présentation MIAGE.</p>
+                <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx" download class="btn-main">Télécharger les Slides</a>
             </div>
         </section>
 
-        <!-- VEILLE -->
         <section id="veille" class="page">
-            <h2 class="section-title">Veille</h2>
+            <h2 class="section-title">Veille Technologique</h2>
             <div class="glass-card">
-                <p class="comp">Analyse technologique sur les ERP</p>
-                <h4>Produit Stockable vs Consommable</h4>
-                <p style="margin-top: 10px;"><strong>Stockable :</strong> Suivi des quantités en temps réel.</p>
-                <p><strong>Consommable :</strong> Considéré comme toujours disponible sans suivi strict.</p>
+                <h4>Stockable vs Consommable dans Odoo</h4>
+                <p style="margin-top: 15px;">
+                    <strong>Produit stockable :</strong> Odoo suit les quantités en temps réel. [cite: 1230]
+                </p>
+                <p>
+                    <strong>Produit consommable :</strong> Considéré comme toujours disponible, sans blocage à zéro. [cite: 1232, 1233]
+                </p>
             </div>
         </section>
 
     </main>
 
-    <script>
-    // ── PDF preview toggle ─────────────────────────────────────
-    function togglePreview(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const isHidden = el.style.display === 'none' || el.style.display === '';
-      el.style.display = isHidden ? 'block' : 'none';
-      const btn = document.querySelector('[data-preview="' + id + '"]');
-      if (btn) {
-        btn.classList.toggle('active', isHidden);
-        btn.title = isHidden ? "Fermer l'aperçu" : "Voir le document";
-      }
-    }
-
-    // ── README inline loader ────────────────────────────────────
-    // Converts Markdown → HTML without any external library
-    function mdToHtml(md) {
-      return md
-        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-        .replace(/```[\w]*
-?([\s\S]*?)```/g,
-          '<pre style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:12px 0"><code style="font-family:'Courier New',monospace;font-size:0.8em;color:#a5f3fc;white-space:pre">$1</code></pre>')
-        .replace(/^### (.+)$/gm,'<h3 style="color:rgba(255,255,255,0.9);font-size:1rem;margin:1.2rem 0 0.4rem;font-weight:700">$1</h3>')
-        .replace(/^## (.+)$/gm, '<h2 style="color:#fff;font-size:1.15rem;margin:1.6rem 0 0.5rem;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:800">$1</h2>')
-        .replace(/^# (.+)$/gm,  '<h1 style="color:#fff;font-size:1.4rem;margin:0 0 1rem;font-weight:900">$1</h1>')
-        .replace(/\*\*(.+?)\*\*/g,'<strong style="color:#fff">$1</strong>')
-        .replace(/\*(.+?)\*/g,   '<em>$1</em>')
-        .replace(/`([^`
-]+)`/g, '<code style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.82em;color:#c4b5fd">$1</code>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" style="color:#818cf8;text-decoration:underline">$1</a>')
-        .replace(/^---$/gm,'<hr style="border:none;border-top:1px solid rgba(255,255,255,0.1);margin:1.2rem 0">')
-        .replace(/^\|(.+)\|$/gm, function(row) {
-          if (/^[\|\s\-:]+$/.test(row)) return '';
-          const cells = row.split('|').slice(1,-1).map(c =>
-            '<td style="padding:6px 12px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);font-size:0.82em">' + c.trim() + '</td>');
-          return '<tr>' + cells.join('') + '</tr>';
-        })
-        .replace(/(<tr>[\s\S]*?<\/tr>)/g,'<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:0.82em">$1</table>')
-        .replace(/^[*\-] (.+)$/gm,'<li style="color:rgba(255,255,255,0.7);margin:3px 0;padding-left:4px">$1</li>')
-        .replace(/(<li[\s\S]*?<\/li>(
-|$))+/g,'<ul style="list-style:disc;padding-left:20px;margin:8px 0">$&</ul>')
-        .replace(/
-{2,}/g,'
-')
-        .replace(/^(?!<[a-z\/])(.*\S.*)$/gm,'<p style="color:rgba(255,255,255,0.6);line-height:1.7;margin:4px 0;font-size:0.87em">$1</p>');
-    }
-
-    let readmeLoaded = false;
-    async function loadReadme() {
-      if (readmeLoaded) return;
-      const box = document.getElementById('readme-inline');
-      if (!box) return;
-
-      // Try multiple paths — the README may be at different locations
-      // depending on how the PortFolio repo is structured
-      const paths = [
-        'assets/README.md',
-        'README.md',
-        'https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/README.md'
-      ];
-
-      for (const path of paths) {
-        try {
-          const res = await fetch(path);
-          if (res.ok) {
-            const md = await res.text();
-            box.innerHTML =
-              '<div style="padding:20px 0;max-height:520px;overflow-y:auto;scrollbar-width:thin">' +
-              mdToHtml(md) + '</div>';
-            readmeLoaded = true;
-            return;
-          }
-        } catch(e) { /* try next path */ }
-      }
-
-      // All paths failed — show a clean fallback with download link
-      box.innerHTML =
-        '<div style="padding:20px;text-align:center;color:rgba(255,255,255,0.4)">' +
-        '<i class="fas fa-file-alt" style="font-size:2rem;margin-bottom:12px;display:block;color:#818cf8"></i>' +
-        '<p style="margin:0 0 12px;font-size:0.9rem">Documentation disponible en téléchargement</p>' +
-        '<a href="assets/README.md" download style="display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#818cf8;padding:8px 16px;border-radius:8px;font-size:0.85rem;text-decoration:none">' +
-        '<i class="fas fa-download"></i> Télécharger le README</a></div>';
-    }
-
-    // Trigger loadReadme on page load if CRM section is already visible,
-    // AND also when navigating to CRM via the nav
-    function showPage(page, el) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
-      document.getElementById(page).classList.add('active');
-      el.classList.add('active');
-      if (page === 'crm') loadReadme();
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      // Auto-load README if CRM page is active on first render
-      const crmPage = document.getElementById('crm');
-      if (crmPage && crmPage.classList.contains('active')) loadReadme();
-    });
-    </script>
-
+    <script src="script.js"></script>
     
-    <!-- <script src="script.js"></script> -->
+    <script>
+      function togglePreview(id, btn) {
+        const el = document.getElementById(id);
+        const isHidden = window.getComputedStyle(el).display === "none";
+        el.style.display = isHidden ? "block" : "none";
+        btn.classList.toggle('active');
+      }
+    </script>
 </body>
 </html>
