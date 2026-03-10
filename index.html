@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,6 +8,24 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      /* Preview toggle button active state */
+      .btn-icon.active {
+        background: rgba(99,102,241,0.15) !important;
+        color: #818cf8 !important;
+        border-color: rgba(99,102,241,0.3) !important;
+      }
+      /* Smooth open/close animation */
+      .pdf-collapsible {
+        overflow: hidden;
+        transition: all 0.3s ease;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-6px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    </style>
 </head>
 <body>
 
@@ -42,6 +61,8 @@
         <!-- TRAVAUX -->
         <section id="travaux" class="page">
             <h2 class="section-title">Travaux Dirigés</h2>
+
+            <!-- TP Odoo -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -49,22 +70,33 @@
                         <span>TP Odoo - Gestion d'entreprise edu-techshop</span>
                     </div>
                     <div class="file-actions">
-                        <a href="assets/TP_Odoo_Samira.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/TP_Odoo_Samira.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <!-- Eye icon toggles the preview -->
+                        <button class="btn-icon" data-preview="prev-odoo"
+                            onclick="togglePreview('prev-odoo')" title="Voir le document">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <a href="assets/TP_Odoo_Samira.pdf" download class="btn-icon" title="Télécharger">
+                            <i class="fas fa-download"></i>
+                        </a>
                     </div>
                 </div>
                 <p class="comp">Gestion complète du cycle : Achats, Stocks, Ventes et Facturation.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback">
-                        <i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i>
-                        <p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p>
-                        <a href="assets/TP_Odoo_Samira.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a>
+                <!-- Preview hidden by default — shown on eye click -->
+                <div id="prev-odoo" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback">
+                            <i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i>
+                            <p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p>
+                            <a href="assets/TP_Odoo_Samira.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a>
+                        </div>
+                        <object class="pdf-embed" data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
+                            <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="450px" style="border:none;"></iframe>
+                        </object>
                     </div>
-                    <object class="pdf-embed" data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
-                        <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="450px" style="border:none;"></iframe>
-                    </object>
                 </div>
             </div>
+
+            <!-- TP HubSpot -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -72,20 +104,27 @@
                         <span>TP Découverte HubSpot</span>
                     </div>
                     <div class="file-actions">
-                        <a href="assets/TP_Découverte_HubSpot_.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/TP_Découverte_HubSpot_.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-hubspot"
+                            onclick="togglePreview('prev-hubspot')" title="Voir le document">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <a href="assets/TP_Découverte_HubSpot_.pdf" download class="btn-icon" title="Télécharger">
+                            <i class="fas fa-download"></i>
+                        </a>
                     </div>
                 </div>
                 <p class="comp">Exercices pratiques et configuration sur HubSpot CRM.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback">
-                        <i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i>
-                        <p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p>
-                        <a href="assets/TP_Découverte_HubSpot_.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a>
+                <div id="prev-hubspot" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback">
+                            <i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i>
+                            <p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p>
+                            <a href="assets/TP_Découverte_HubSpot_.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a>
+                        </div>
+                        <object class="pdf-embed" data="assets/TP_Découverte_HubSpot_.pdf" type="application/pdf" width="100%" height="450px">
+                            <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="450px" style="border:none;"></iframe>
+                        </object>
                     </div>
-                    <object class="pdf-embed" data="assets/TP_Découverte_HubSpot_.pdf" type="application/pdf" width="100%" height="450px">
-                        <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="450px" style="border:none;"></iframe>
-                    </object>
                 </div>
             </div>
         </section>
@@ -93,89 +132,108 @@
         <!-- COURS -->
         <section id="cours" class="page">
             <h2 class="section-title">Supports de Cours</h2>
+
+            <!-- Macro: each course card follows the same pattern -->
+
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Introduction au CRM</span></div>
                     <div class="file-actions">
-                        <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-crm1" onclick="togglePreview('prev-crm1')" title="Voir le document"><i class="fas fa-eye"></i></button>
+                        <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Concepts fondamentaux et enjeux de la Relation Client.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                    <object class="pdf-embed" data="assets/Copie de 1- CRM version Etudiant.docx.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/Copie de 1- CRM version Etudiant.docx.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                <div id="prev-crm1" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
+                        <object class="pdf-embed" data="assets/Copie de 1- CRM version Etudiant.docx.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/Copie de 1- CRM version Etudiant.docx.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                    </div>
                 </div>
             </div>
+
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Support de cours : HubSpot</span></div>
                     <div class="file-actions">
-                        <a href="assets/8- hubspot.docx.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/8- hubspot.docx.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-hs" onclick="togglePreview('prev-hs')" title="Voir le document"><i class="fas fa-eye"></i></button>
+                        <a href="assets/8- hubspot.docx.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Découverte et prise en main de la plateforme CRM HubSpot.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/8- hubspot.docx.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                    <object class="pdf-embed" data="assets/8- hubspot.docx.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/8- hubspot.docx.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                <div id="prev-hs" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/8- hubspot.docx.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
+                        <object class="pdf-embed" data="assets/8- hubspot.docx.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/8- hubspot.docx.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                    </div>
                 </div>
             </div>
+
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Lexique des Termes Techniques CRM</span></div>
                     <div class="file-actions">
-                        <!-- ✅ FIX PDF MOBILE : target="_blank" sans attribut download -->
-                        <a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/2- termes techniques CRM version Etudiant.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-lex" onclick="togglePreview('prev-lex')" title="Voir le document"><i class="fas fa-eye"></i></button>
+                        <a href="assets/2- termes techniques CRM version Etudiant.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Vocabulaire métier et définitions clés du secteur.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                    <object class="pdf-embed" data="assets/2- termes techniques CRM version Etudiant.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/2- termes techniques CRM version Etudiant.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                <div id="prev-lex" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
+                        <object class="pdf-embed" data="assets/2- termes techniques CRM version Etudiant.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/2- termes techniques CRM version Etudiant.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                    </div>
                 </div>
             </div>
+
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Pipeline vs Funnel de Vente</span></div>
                     <div class="file-actions">
-                        <a href="assets/3- pipeline vs funnel.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/3- pipeline vs funnel.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-pipe" onclick="togglePreview('prev-pipe')" title="Voir le document"><i class="fas fa-eye"></i></button>
+                        <a href="assets/3- pipeline vs funnel.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Analyse des processus commerciaux et tunnels de conversion.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/3- pipeline vs funnel.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                    <object class="pdf-embed" data="assets/3- pipeline vs funnel.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/3- pipeline vs funnel.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                <div id="prev-pipe" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/3- pipeline vs funnel.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
+                        <object class="pdf-embed" data="assets/3- pipeline vs funnel.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/3- pipeline vs funnel.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                    </div>
                 </div>
             </div>
+
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>CRM vs PGI (ERP)</span></div>
                     <div class="file-actions">
-                        <a href="assets/CRM VS PGI VERSION ETUD.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/CRM VS PGI VERSION ETUD.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-erp" onclick="togglePreview('prev-erp')" title="Voir le document"><i class="fas fa-eye"></i></button>
+                        <a href="assets/CRM VS PGI VERSION ETUD.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Comparaison entre les systèmes CRM et les Progiciels de Gestion Intégrés.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/CRM VS PGI VERSION ETUD.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                    <object class="pdf-embed" data="assets/CRM VS PGI VERSION ETUD.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/CRM VS PGI VERSION ETUD.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                <div id="prev-erp" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/CRM VS PGI VERSION ETUD.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
+                        <object class="pdf-embed" data="assets/CRM VS PGI VERSION ETUD.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/CRM VS PGI VERSION ETUD.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                    </div>
                 </div>
             </div>
+
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Communication Digitale - Samira</span></div>
                     <div class="file-actions">
-                        <a href="assets/Com_Digitale_Samira.pdf" target="_blank" rel="noopener" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/Com_Digitale_Samira.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" data-preview="prev-com" onclick="togglePreview('prev-com')" title="Voir le document"><i class="fas fa-eye"></i></button>
+                        <a href="assets/Com_Digitale_Samira.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Stratégie de communication et présence numérique.</p>
-                <div class="preview-container">
-                    <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/Com_Digitale_Samira.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
-                    <object class="pdf-embed" data="assets/Com_Digitale_Samira.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/Com_Digitale_Samira.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                <div id="prev-com" class="pdf-collapsible" style="display:none;">
+                    <div class="preview-container">
+                        <div class="pdf-fallback"><i class="fas fa-file-pdf" style="font-size:2rem;color:#ef4444;margin-bottom:8px;display:block"></i><p style="margin-bottom:10px;color:#6b7280;font-size:0.8rem">Aperçu non disponible sur mobile.</p><a href="assets/Com_Digitale_Samira.pdf" target="_blank" rel="noopener" class="btn-sm">Ouvrir le document</a></div>
+                        <object class="pdf-embed" data="assets/Com_Digitale_Samira.pdf" type="application/pdf" width="100%" height="400px"><iframe src="assets/Com_Digitale_Samira.pdf" width="100%" height="400px" style="border:none;"></iframe></object>
+                    </div>
                 </div>
             </div>
         </section>
@@ -192,16 +250,11 @@
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════
-             PROJET CRM — section complète avec PPTX + README inline
-             Fichiers attendus dans assets/ :
-               - AAAS_CRM_ALIM_SAMIRA.pptx
-               - README.md
-             ═══════════════════════════════════════════════════════ -->
+        <!-- PROJET CRM -->
         <section id="crm" class="page">
             <h2 class="section-title">Projet CRM</h2>
 
-            <!-- Héro -->
+            <!-- Hero -->
             <div class="glass-card crm-hero">
                 <div class="crm-top">
                     <div class="crm-monogram">A</div>
@@ -229,14 +282,14 @@
                     <a href="https://github.com/Alim-Samira/aaas-crm" target="_blank" rel="noopener" class="btn-crm btn-ghost">
                         <i class="fab fa-github"></i> Code source
                     </a>
-                    <!-- ── LIEN CRM VIA VERCEL ─────────────────────────────────── -->
-                   <a href="https://aaas-crm.vercel.app" target="_blank" rel="noopener" class="btn-crm btn-primary">
-    <i class="fas fa-rocket"></i> Voir la démo live
-</a>
+                    <!-- ✅ LIVE DEMO — replace URL with your Vercel domain -->
+                    <a href="https://aaas-crm.vercel.app" target="_blank" rel="noopener" class="btn-crm btn-primary">
+                        <i class="fas fa-rocket"></i> Voir la démo live
+                    </a>
                 </div>
             </div>
 
-            <!-- ── Carte PPTX ─────────────────────────────────── -->
+            <!-- ── PPTX card — NOW WITH EYE ICON ──────────────────── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -244,6 +297,12 @@
                         <span>Présentation du projet — Soutenance</span>
                     </div>
                     <div class="file-actions">
+                        <!-- Eye icon: opens Google Slides viewer in new tab -->
+                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://github.com/Alim-Samira/aaas-crm/raw/main/assets/AAAS_CRM_ALIM_SAMIRA.pptx"
+                           target="_blank" rel="noopener"
+                           class="btn-icon" title="Voir la présentation en ligne">
+                            <i class="fas fa-eye"></i>
+                        </a>
                         <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx"
                            download="AAAS_CRM_Presentation_AlimSamira.pptx"
                            class="btn-icon" title="Télécharger">
@@ -260,15 +319,21 @@
                             <small>Présentation soutenance · 8 slides</small>
                         </div>
                     </div>
-                    <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx"
-                       download="AAAS_CRM_Presentation_AlimSamira.pptx"
-                       class="btn-main">
-                        <i class="fas fa-download"></i> Télécharger la présentation
-                    </a>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://github.com/Alim-Samira/aaas-crm/raw/main/assets/AAAS_CRM_ALIM_SAMIRA.pptx"
+                           target="_blank" rel="noopener" class="btn-main">
+                            <i class="fas fa-eye"></i> Voir en ligne
+                        </a>
+                        <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx"
+                           download="AAAS_CRM_Presentation_AlimSamira.pptx"
+                           class="btn-main" style="background:rgba(255,255,255,0.08);color:white;border:1px solid rgba(255,255,255,0.15);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- ── Carte README inline ────────────────────────── -->
+            <!-- README card -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -282,7 +347,6 @@
                     </div>
                 </div>
                 <p class="comp">Stack · Architecture UML · Installation · Déploiement · RBAC</p>
-                <!-- README chargé et rendu directement ici -->
                 <div id="readme-inline" class="readme-inline">
                     <div class="readme-spinner">
                         <i class="fas fa-circle-notch fa-spin"></i>
@@ -327,6 +391,31 @@
 
     </main>
 
-    <script src="script.js"></script>
+    <script>
+    // ── Page navigation ────────────────────────────────────────
+    function showPage(page, el) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+      document.getElementById(page).classList.add('active');
+      el.classList.add('active');
+    }
+
+    // ── PDF preview toggle ─────────────────────────────────────
+    // Click eye icon → show/hide the collapsible preview block
+    function togglePreview(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const isHidden = el.style.display === 'none' || el.style.display === '';
+      el.style.display = isHidden ? 'block' : 'none';
+      // Highlight the eye button when open
+      const btn = document.querySelector(`[data-preview="${id}"]`);
+      if (btn) {
+        btn.classList.toggle('active', isHidden);
+        btn.title = isHidden ? "Fermer l'aperçu" : "Voir le document";
+      }
+    }
+    </script>
+
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
