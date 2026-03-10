@@ -1,3 +1,22 @@
+<!-- 
+  ════════════════════════════════════════════════════════
+  PORTFOLIO PATCH — index.html
+  Change: PDF previews hidden by default, shown on eye click
+          PPTX card gets an eye/view icon
+  ════════════════════════════════════════════════════════
+
+  STEP 1 — Replace your existing <script src="script.js"> section
+  with the new script.js (see portfolio_patch.js)
+
+  STEP 2 — Replace EVERY file-card block that has a pdf preview.
+  Pattern: replace <div class="preview-container">...</div>
+  with the collapsed version below.
+
+  STEP 3 — Update the PPTX card to add an eye icon.
+
+  Copy the full updated index.html from this file.
+  ════════════════════════════════════════════════════════
+-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -288,7 +307,7 @@
                 </div>
             </div>
 
-            <!-- ── PPTX card — NOW WITH EYE ICON ──────────────────── -->
+            <!-- PPTX card — single eye + single download icon -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -296,11 +315,9 @@
                         <span>Présentation du projet — Soutenance</span>
                     </div>
                     <div class="file-actions">
-                        <!-- Eye icon: opens Office Online viewer (file must be publicly hosted) -->
-                        <!-- OPTION A: if your PPTX is in a public GitHub repo -->
                         <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/public/AAAS_CRM_ALIM_SAMIRA.pptx"
                            target="_blank" rel="noopener"
-                           class="btn-icon" title="Voir la présentation en ligne">
+                           class="btn-icon" title="Visualiser la présentation">
                             <i class="fas fa-eye"></i>
                         </a>
                         <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx"
@@ -311,26 +328,6 @@
                     </div>
                 </div>
                 <p class="comp">Slides de soutenance · 8 diapositives · Stack SaaS</p>
-                <div class="crm-pptx-block">
-                    <div class="crm-pptx-visual">
-                        <i class="fas fa-file-powerpoint"></i>
-                        <div>
-                            <strong>AAAS_CRM_ALIM_SAMIRA.pptx</strong>
-                            <small>Présentation soutenance · 8 slides</small>
-                        </div>
-                    </div>
-                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/public/AAAS_CRM_ALIM_SAMIRA.pptx"
-                           target="_blank" rel="noopener" class="btn-main">
-                            <i class="fas fa-eye"></i> Voir en ligne
-                        </a>
-                        <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx"
-                           download="AAAS_CRM_Presentation_AlimSamira.pptx"
-                           class="btn-main" style="background:rgba(255,255,255,0.08);color:white;border:1px solid rgba(255,255,255,0.15);">
-                            <i class="fas fa-download"></i> Télécharger
-                        </a>
-                    </div>
-                </div>
             </div>
 
             <!-- README card -->
@@ -392,30 +389,107 @@
     </main>
 
     <script>
-    // ── Page navigation ────────────────────────────────────────
-    function showPage(page, el) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
-      document.getElementById(page).classList.add('active');
-      el.classList.add('active');
-    }
-
     // ── PDF preview toggle ─────────────────────────────────────
-    // Click eye icon → show/hide the collapsible preview block
     function togglePreview(id) {
       const el = document.getElementById(id);
       if (!el) return;
       const isHidden = el.style.display === 'none' || el.style.display === '';
       el.style.display = isHidden ? 'block' : 'none';
-      // Highlight the eye button when open
-      const btn = document.querySelector(`[data-preview="${id}"]`);
+      const btn = document.querySelector('[data-preview="' + id + '"]');
       if (btn) {
         btn.classList.toggle('active', isHidden);
         btn.title = isHidden ? "Fermer l'aperçu" : "Voir le document";
       }
     }
+
+    // ── README inline loader ────────────────────────────────────
+    // Converts Markdown → HTML without any external library
+    function mdToHtml(md) {
+      return md
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/```[\w]*
+?([\s\S]*?)```/g,
+          '<pre style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:12px 0"><code style="font-family:'Courier New',monospace;font-size:0.8em;color:#a5f3fc;white-space:pre">$1</code></pre>')
+        .replace(/^### (.+)$/gm,'<h3 style="color:rgba(255,255,255,0.9);font-size:1rem;margin:1.2rem 0 0.4rem;font-weight:700">$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2 style="color:#fff;font-size:1.15rem;margin:1.6rem 0 0.5rem;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:800">$1</h2>')
+        .replace(/^# (.+)$/gm,  '<h1 style="color:#fff;font-size:1.4rem;margin:0 0 1rem;font-weight:900">$1</h1>')
+        .replace(/\*\*(.+?)\*\*/g,'<strong style="color:#fff">$1</strong>')
+        .replace(/\*(.+?)\*/g,   '<em>$1</em>')
+        .replace(/`([^`
+]+)`/g, '<code style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.82em;color:#c4b5fd">$1</code>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" style="color:#818cf8;text-decoration:underline">$1</a>')
+        .replace(/^---$/gm,'<hr style="border:none;border-top:1px solid rgba(255,255,255,0.1);margin:1.2rem 0">')
+        .replace(/^\|(.+)\|$/gm, function(row) {
+          if (/^[\|\s\-:]+$/.test(row)) return '';
+          const cells = row.split('|').slice(1,-1).map(c =>
+            '<td style="padding:6px 12px;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);font-size:0.82em">' + c.trim() + '</td>');
+          return '<tr>' + cells.join('') + '</tr>';
+        })
+        .replace(/(<tr>[\s\S]*?<\/tr>)/g,'<table style="width:100%;border-collapse:collapse;margin:10px 0;font-size:0.82em">$1</table>')
+        .replace(/^[*\-] (.+)$/gm,'<li style="color:rgba(255,255,255,0.7);margin:3px 0;padding-left:4px">$1</li>')
+        .replace(/(<li[\s\S]*?<\/li>(
+|$))+/g,'<ul style="list-style:disc;padding-left:20px;margin:8px 0">$&</ul>')
+        .replace(/
+{2,}/g,'
+')
+        .replace(/^(?!<[a-z\/])(.*\S.*)$/gm,'<p style="color:rgba(255,255,255,0.6);line-height:1.7;margin:4px 0;font-size:0.87em">$1</p>');
+    }
+
+    let readmeLoaded = false;
+    async function loadReadme() {
+      if (readmeLoaded) return;
+      const box = document.getElementById('readme-inline');
+      if (!box) return;
+
+      // Try multiple paths — the README may be at different locations
+      // depending on how the PortFolio repo is structured
+      const paths = [
+        'assets/README.md',
+        'README.md',
+        'https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/README.md'
+      ];
+
+      for (const path of paths) {
+        try {
+          const res = await fetch(path);
+          if (res.ok) {
+            const md = await res.text();
+            box.innerHTML =
+              '<div style="padding:20px 0;max-height:520px;overflow-y:auto;scrollbar-width:thin">' +
+              mdToHtml(md) + '</div>';
+            readmeLoaded = true;
+            return;
+          }
+        } catch(e) { /* try next path */ }
+      }
+
+      // All paths failed — show a clean fallback with download link
+      box.innerHTML =
+        '<div style="padding:20px;text-align:center;color:rgba(255,255,255,0.4)">' +
+        '<i class="fas fa-file-alt" style="font-size:2rem;margin-bottom:12px;display:block;color:#818cf8"></i>' +
+        '<p style="margin:0 0 12px;font-size:0.9rem">Documentation disponible en téléchargement</p>' +
+        '<a href="assets/README.md" download style="display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#818cf8;padding:8px 16px;border-radius:8px;font-size:0.85rem;text-decoration:none">' +
+        '<i class="fas fa-download"></i> Télécharger le README</a></div>';
+    }
+
+    // Trigger loadReadme on page load if CRM section is already visible,
+    // AND also when navigating to CRM via the nav
+    function showPage(page, el) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+      document.getElementById(page).classList.add('active');
+      el.classList.add('active');
+      if (page === 'crm') loadReadme();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-load README if CRM page is active on first render
+      const crmPage = document.getElementById('crm');
+      if (crmPage && crmPage.classList.contains('active')) loadReadme();
+    });
     </script>
 
+    
     <!-- <script src="script.js"></script> -->
 </body>
 </html>
