@@ -223,7 +223,7 @@
                 <div class="file-header">
                     <div class="file-title">
                         <i class="fas fa-images" style="color: #10b981;"></i>
-                        <span>Images du Projet (MCD, ERD, UML)</span>
+                        <span>Images du Projet</span>
                     </div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-images', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
@@ -234,18 +234,18 @@
                     <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 10px 0;">
                         <div class="img-card-inner">
                             <h4 style="font-size: 0.85rem; margin-bottom: 8px;">MCD</h4>
-                            <img src="assets/MCD (Modèle Conceptuel de Données).jpg" class="img-preview" alt="MCD" onclick="window.open(this.src)">
-                            <a href="assets/MCD (Modèle Conceptuel de Données).jpg" download class="btn-sm"><i class="fas fa-download"></i></a>
+                            <img src="assets/MCD (Modèle Conceptuel de Données).png" class="img-preview" alt="MCD" onclick="window.open(this.src)">
+                            <a href="assets/MCD (Modèle Conceptuel de Données).png" download class="btn-sm"><i class="fas fa-download"></i></a>
                         </div>
                         <div class="img-card-inner">
                             <h4 style="font-size: 0.85rem; margin-bottom: 8px;">ER Diagram</h4>
-                            <img src="assets/ER Diagram.jpg" class="img-preview" alt="ERD" onclick="window.open(this.src)">
-                            <a href="assets/ER Diagram.jpg" download class="btn-sm"><i class="fas fa-download"></i></a>
+                            <img src="assets/ER Diagram.png" class="img-preview" alt="ERD" onclick="window.open(this.src)">
+                            <a href="assets/ER Diagram.png" download class="btn-sm"><i class="fas fa-download"></i></a>
                         </div>
                         <div class="img-card-inner">
-                            <h4 style="font-size: 0.85rem; margin-bottom: 8px;">UML</h4>
-                            <img src="assets/Diagramme de Classes UML.jpg" class="img-preview" alt="UML" onclick="window.open(this.src)">
-                            <a href="assets/Diagramme de Classes UML.jpg" download class="btn-sm"><i class="fas fa-download"></i></a>
+                            <h4 style="font-size: 0.85rem; margin-bottom: 8px;">Diagramme de Classes UML</h4>
+                            <img src="assets/Diagramme de Classes UML.png" class="img-preview" alt="UML" onclick="window.open(this.src)">
+                            <a href="assets/Diagramme de Classes UML.png" download class="btn-sm"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                 </div>
@@ -316,7 +316,6 @@
         btn.classList.toggle('active');
       }
 
-      // showPage 
       function showPage(pageId, navEl) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
