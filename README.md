@@ -1,1 +1,9 @@
 # PortFolio
+
+No part of this publication may be reproduced, distributed, or used without prior permission from the original author. 
+For permission requests, please contact the author.
+
+GitHub: https://github.com/Alim-Samira
+Mail: alim.samira2002@gmail.com
+
+MIT — Remember to follow the above licensing terms.
