@@ -24,9 +24,9 @@
         margin-bottom: 20px;
       }
       .img-card-inner {
-        background: rgba(255,255,255,0.05); 
-        padding: 15px; 
-        text-align: center; 
+        background: rgba(255,255,255,0.05);
+        padding: 15px;
+        text-align: center;
         border-radius: 12px;
         border: 1px solid rgba(255,255,255,0.1);
         transition: transform 0.2s;
@@ -39,11 +39,11 @@
         border-color: rgba(99,102,241,0.4);
       }
       .img-preview {
-        width: 100%; 
-        height: 150px; 
-        object-fit: cover; 
-        border-radius: 8px; 
-        cursor: pointer; 
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
         margin-bottom: 12px;
       }
       .img-card-actions {
@@ -51,6 +51,35 @@
         justify-content: center;
         gap: 10px;
         margin-top: 10px;
+      }
+      /* Excel file icon color */
+      .icon-xlsx { color: #217346; }
+      /* Preview iframe wrapper */
+      .preview-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      /* Sujet blanc badge */
+      .badge-exam {
+        display: inline-block;
+        background: rgba(234,88,12,0.15);
+        color: #ea580c;
+        border: 1px solid rgba(234,88,12,0.3);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        padding: 2px 10px;
+        font-weight: 600;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+      .section-divider {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255,255,255,0.35);
+        padding: 14px 0 6px 2px;
+        font-weight: 600;
       }
     </style>
 </head>
@@ -71,6 +100,7 @@
 
     <main class="container">
 
+        <!-- ══════════════════════ ACCUEIL ══════════════════════ -->
         <section id="about" class="page active">
             <div class="glass-card hero">
                 <span class="badge">Étudiante MIAGE</span>
@@ -84,81 +114,235 @@
             </div>
         </section>
 
+        <!-- ══════════════════════ TRAVAUX ══════════════════════ -->
         <section id="travaux" class="page">
-            <h2 class="section-title">Travaux Dirigés</h2>
+            <h2 class="section-title">Travaux Dirigés &amp; Exercices</h2>
 
+            <!-- ── TP Odoo ─────────────────────────────────────── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>TP Odoo - edu-techshop</span></div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-odoo', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/TP_Odoo_Samira.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <a href="assets/TP_Odoo_Samira.pdf" download="TP_Odoo_Samira.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Gestion complète du cycle : Achats, Stocks et Ventes.</p>
                 <div id="prev-odoo" class="pdf-collapsible">
                     <div class="preview-container">
-                        <object data="assets/TP_Odoo_Samira.pdf" type="application/pdf" width="100%" height="450px">
-                            <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="450px"></iframe>
-                        </object>
+                        <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="500px" style="border:none;"
+                                title="TP Odoo"></iframe>
                     </div>
                 </div>
             </div>
 
+            <!-- ── TP HubSpot ──────────────────────────────────── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>TP Découverte HubSpot</span></div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-hubspot', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/TP_Découverte_HubSpot_.pdf" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <a href="assets/TP_Découverte_HubSpot_.pdf" download="TP_Découverte_HubSpot.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Mise en pratique sur le CRM SaaS HubSpot.</p>
                 <div id="prev-hubspot" class="pdf-collapsible">
                     <div class="preview-container">
-                        <object data="assets/TP_Découverte_HubSpot_.pdf" type="application/pdf" width="100%" height="450px">
-                            <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="450px"></iframe>
-                        </object>
+                        <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="500px" style="border:none;"
+                                title="TP HubSpot"></iframe>
                     </div>
                 </div>
             </div>
+
+            <!-- ── TD + QCM ────────────────────────────────────── -->
+            <div class="glass-card">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-word" style="color:#2563EB;"></i>
+                        <span>TD + QCM — Communication Digitale</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/6-%20Td%20%2B%20QCM%20pour%20%C3%A9tudiants.docx"
+                           target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                        <a href="assets/6- Td + QCM pour étudiants.docx" download="6-TD_QCM_Communication_Digitale.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <p class="comp">TD noté · Questions de cours · QCM · Communication Digitale &amp; KPI.</p>
+            </div>
+
+            <!-- ── TP KPI Excel ────────────────────────────────── -->
+            <div class="glass-card">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-excel icon-xlsx"></i>
+                        <span>TP KPI — Analyse des canaux digitaux</span>
+                    </div>
+                    <div class="file-actions">
+                        <a href="assets/tp_KPI_V_E.xlsx" download="TP_KPI_AlimSamira.xlsx" class="btn-icon" title="Télécharger le fichier Excel"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <p class="comp">Calcul des KPI (CTR · CPC · CPA · ROI) sur 5 canaux digitaux · Formules automatiques · Corrigé inclus.</p>
+                <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background:rgba(33,115,70,0.15);color:#217346;border:1px solid rgba(33,115,70,0.3);border-radius:20px;font-size:0.75rem;padding:3px 12px;font-weight:600;">Excel .xlsx</span>
+                    <span style="background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.3);border-radius:20px;font-size:0.75rem;padding:3px 12px;">Formules dynamiques</span>
+                    <span style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.3);border-radius:20px;font-size:0.75rem;padding:3px 12px;">Corrigé inclus</span>
+                </div>
+            </div>
+
+            <!-- ── Étude de cas KPI ────────────────────────────── -->
+            <div class="glass-card">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-pdf icon-pdf"></i>
+                        <span>Étude de cas KPI — Sephora</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-icon" onclick="togglePreview('prev-etude', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                        <a href="assets/5-_Étude_de_cas_KPI.pdf" download="5-Etude_de_cas_KPI.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <p class="comp">Analyse complète d'une campagne digitale multi-canal · CTR · CPC · CPA · ROI · Recommandations stratégiques.</p>
+                <div id="prev-etude" class="pdf-collapsible">
+                    <div class="preview-container">
+                        <iframe src="assets/5-_Étude_de_cas_KPI.pdf" width="100%" height="500px" style="border:none;"
+                                title="Étude de cas KPI"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Sujet Blanc ─────────────────────────────────── -->
+            <div class="glass-card">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-pdf icon-pdf" style="color:#ea580c;"></i>
+                        <span>Sujet Blanc — Communication Digitale<span class="badge-exam">Examen</span></span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-icon" onclick="togglePreview('prev-sujet', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                        <a href="assets/7-_sujet_blanc.pdf" download="7-Sujet_Blanc_Communication_Digitale.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <p class="comp">Sujet d'entraînement complet · 5 parties : Concepts · Étude de cas · Stratégie digitale · Dimension technique MIAGE · Enjeux éthiques.</p>
+                <div id="prev-sujet" class="pdf-collapsible">
+                    <div class="preview-container">
+                        <iframe src="assets/7-_sujet_blanc.pdf" width="100%" height="600px" style="border:none;"
+                                title="Sujet Blanc Communication Digitale"></iframe>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
+        <!-- ══════════════════════ COURS ════════════════════════ -->
         <section id="cours" class="page">
             <h2 class="section-title">Supports de Cours</h2>
+
             <div class="grid">
+
+                <!-- 1 - Fiche cours -->
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title">
+                            <i class="fas fa-file-word" style="color:#2563EB;"></i>
+                            <span>1 — Fiche de cours</span>
+                        </div>
+                        <div class="file-actions">
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/1-%20Fiche%20cours%20V_E.docx"
+                               target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/1- Fiche cours V_E.docx" download="1-Fiche_cours.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                    <p class="comp">Introduction à la communication digitale · Concepts fondamentaux.</p>
+                </div>
+
+                <!-- 2 - Funnel marketing pourquoi -->
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title">
+                            <i class="fas fa-file-word" style="color:#2563EB;"></i>
+                            <span>2 — Pourquoi étudier le funnel marketing ?</span>
+                        </div>
+                        <div class="file-actions">
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/2-%20Pourquoi%20%C3%89tudier%20le%20funnel%20marketing%20V_E.docx"
+                               target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/2- Pourquoi Étudier le funnel marketing V_E.docx" download="2-Funnel_marketing_pourquoi.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                    <p class="comp">Enjeux du tunnel de conversion · TOFU / MOFU / BOFU.</p>
+                </div>
+
+                <!-- 3 - Création funnel -->
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title">
+                            <i class="fas fa-file-word" style="color:#2563EB;"></i>
+                            <span>3 — Création d'un funnel marketing</span>
+                        </div>
+                        <div class="file-actions">
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/3-%20Cr%C3%A9ation%20de%20funnel%20marketing.docx"
+                               target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/3- Création de funnel marketing.docx" download="3-Creation_funnel_marketing.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                    <p class="comp">Étapes de conception · Canaux d'acquisition · Automatisation.</p>
+                </div>
+
+                <!-- 4 - KPI Indicateurs -->
+                <div class="glass-card">
+                    <div class="file-header">
+                        <div class="file-title">
+                            <i class="fas fa-file-word" style="color:#2563EB;"></i>
+                            <span>4 — Les indicateurs KPI</span>
+                        </div>
+                        <div class="file-actions">
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/4_%20Les%20indicateurs%20KPI%20V_E.docx"
+                               target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/4_ Les indicateurs KPI V_E.docx" download="4-Les_indicateurs_KPI.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                    <p class="comp">CTR · CPC · CPA · ROI · Outils d'analyse · Google Analytics · Meta Ads.</p>
+                </div>
+
+                <!-- Introduction CRM -->
                 <div class="glass-card">
                     <div class="file-header">
                         <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Introduction au CRM</span></div>
                         <div class="file-actions">
-                            <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                            <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/Copie de 1- CRM version Etudiant.docx.pdf" download="Introduction_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
-                    <p class="comp">Concepts fondamentaux et enjeux.</p>
+                    <p class="comp">Concepts fondamentaux et enjeux du CRM.</p>
                 </div>
+
+                <!-- Lexique CRM -->
                 <div class="glass-card">
                     <div class="file-header">
-                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Lexique Technique</span></div>
+                        <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Lexique Technique CRM</span></div>
                         <div class="file-actions">
-                            <a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
+                            <a href="assets/2- termes techniques CRM version Etudiant.pdf" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/2- termes techniques CRM version Etudiant.pdf" download="Lexique_Technique_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
-                    <p class="comp">Terminologie métier SI.</p>
+                    <p class="comp">Terminologie métier Systèmes d'Information.</p>
                 </div>
+
             </div>
         </section>
 
+        <!-- ══════════════════════ CERTIFS ══════════════════════ -->
         <section id="certifs" class="page">
             <h2 class="section-title">Certifications</h2>
             <div class="glass-card">
                 <div class="cert-item">
                     <i class="fas fa-certificate"></i>
                     <span>Attestation Odoo Education</span>
-                    <a href="assets/certificat_odoo.pdf" target="_blank" class="btn-sm">Consulter</a>
+                    <a href="assets/certificat_odoo.pdf" target="_blank" rel="noopener" class="btn-sm">Consulter</a>
                 </div>
             </div>
         </section>
 
+        <!-- ══════════════════════ PROJET CRM ═══════════════════ -->
         <section id="crm" class="page">
             <h2 class="section-title">Projet CRM — AAAS CRM</h2>
 
@@ -171,7 +355,7 @@
                     </div>
                 </div>
                 <p class="crm-desc" style="margin: 15px 0;">
-                    Application CRM SaaS complète développée avec Next.js 14 et Supabase. 
+                    Application CRM SaaS complète développée avec Next.js 14 et Supabase.
                     Gère le cycle de vente de bout en bout avec Pipeline Kanban et automatisation email.
                 </p>
                 <div class="cta-group" style="justify-content: flex-start; gap: 15px;">
@@ -191,10 +375,10 @@
                     </div>
                 </div>
                 <p class="comp">Modélisations conceptuelles et diagrammes techniques.</p>
-                
+
                 <div id="prev-images" class="pdf-collapsible">
                     <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 10px 0;">
-                        
+
                         <div class="img-card-inner">
                             <h4 style="font-size: 0.85rem; margin-bottom: 8px;">MCD</h4>
                             <img src="assets/MCD (Modèle Conceptuel de Données).png" class="img-preview" alt="MCD" onclick="window.open(this.src)">
@@ -233,14 +417,13 @@
                         <span>Présentation du projet — Soutenance</span>
                     </div>
                     <div class="file-actions">
-                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/public/AAAS_CRM_ALIM_SAMIRA.pptx" target="_blank" class="btn-icon"><i class="fas fa-eye"></i></a>
-                        <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx" download class="btn-icon"><i class="fas fa-download"></i></a>
+                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/public/AAAS_CRM_ALIM_SAMIRA.pptx" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                        <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                <p class="comp">Support visuel · Architecture & Stack technique</p>
+                <p class="comp">Support visuel · Architecture &amp; Stack technique</p>
             </div>
 
-            <!-- ── RAPPORT DE PROJET ─────────────────────────── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -255,16 +438,11 @@
                 <p class="comp">Modélisation · Architecture · Fonctionnalités · Déploiement</p>
                 <div id="prev-rapport" class="pdf-collapsible">
                     <div class="preview-container">
-                        <object data="assets/Rapport_Projet_AAAS_CRM.pdf" type="application/pdf" width="100%" height="600px">
-                            <iframe src="assets/Rapport_Projet_AAAS_CRM.pdf" width="100%" height="600px" style="border:none;">
-                                <p>Votre navigateur ne supporte pas l'affichage PDF.
-                                <a href="assets/Rapport_Projet_AAAS_CRM.pdf" download>Télécharger le rapport</a></p>
-                            </iframe>
-                        </object>
+                        <iframe src="assets/Rapport_Projet_AAAS_CRM.pdf" width="100%" height="600px" style="border:none;"
+                                title="Rapport Projet AAAS CRM"></iframe>
                     </div>
                 </div>
             </div>
-            <!-- ── FIN RAPPORT ──────────────────────────────── -->
 
             <div class="glass-card">
                 <div class="file-header">
@@ -281,14 +459,16 @@
     <script>
       function togglePreview(id, btn) {
         const el = document.getElementById(id);
-        const isHidden = window.getComputedStyle(el).display === "none";
-        el.style.display = isHidden ? "block" : "none";
-        btn.classList.toggle('active');
+        if (!el) return;
+        const isHidden = el.style.display === '' || el.style.display === 'none';
+        el.style.display = isHidden ? 'block' : 'none';
+        btn.classList.toggle('active', isHidden);
       }
 
       function showPage(pageId, navEl) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
+        const target = document.getElementById(pageId);
+        if (target) target.classList.add('active');
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         navEl.classList.add('active');
       }
