@@ -178,7 +178,7 @@
                         <span>TP KPI — Analyse des canaux digitaux</span>
                     </div>
                     <div class="file-actions">
-                        <a href="assets/tp%20KPI%20V_E.xltx" download="tp KPI V_E.xltx" class="btn-icon" title="Télécharger le fichier Excel"><i class="fas fa-download"></i></a>
+                        <button class="btn-icon" onclick="forceDownload('assets/tp%20KPI%20V_E.xltx','tp KPI V_E.xltx')" title="Télécharger le fichier Excel"><i class="fas fa-download"></i></button>
                     </div>
                 </div>
                 <p class="comp">Calcul des KPI (CTR · CPC · CPA · ROI) sur 5 canaux digitaux · Formules automatiques.</p>
@@ -477,6 +477,23 @@
     </main>
 
     <script>
+      function forceDownload(url, filename) {
+        fetch(url)
+          .then(res => {
+            if (!res.ok) throw new Error('Fichier introuvable (' + res.status + ')');
+            return res.blob();
+          })
+          .then(blob => {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+          })
+          .catch(err => alert('Erreur de téléchargement : ' + err.message));
+      }
+
       function togglePreview(id, btn) {
         const el = document.getElementById(id);
         if (!el) return;
