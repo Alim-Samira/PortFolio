@@ -82,7 +82,7 @@ body::after  { width:500px;height:500px;background:radial-gradient(circle,var(--
     padding:10px 16px;border-radius:12px;font-size:0.8rem;
     transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
     position:relative;overflow:hidden;display:block;
-    /* ✅ FIX triple-click : pointer-events sur le <a> seulement,
+    /*  FIX triple-click : pointer-events sur le <a> seulement,
        pas sur les spans internes. On retire tout ::before interférant */
 }
 .menu a::before {
@@ -135,7 +135,7 @@ body::after  { width:500px;height:500px;background:radial-gradient(circle,var(--
 .hero { text-align:center;padding:50px 40px;position:relative; }
 .badge {
     display:inline-block;padding:8px 20px;
-    background:linear-gradient(135deg,var(--pink-soft),rgba(255,255,255,0.8));
+    background:linear-gradient(135deg,var(--pink-soft),rgba(123, 111, 111, 0.8));
     border:1px solid var(--pink-gradient-start);border-radius:30px;
     font-size:0.75rem;font-weight:700;color:var(--primary);
     margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;
@@ -207,8 +207,8 @@ body::after  { width:500px;height:500px;background:radial-gradient(circle,var(--
     margin-bottom:20px;padding-bottom:15px;border-bottom:2px solid rgba(255,193,227,0.2);
 }
 .file-title { display:flex;align-items:center;font-weight:700;font-size:1rem;gap:12px; }
-.icon-pdf { color:#ef4444;font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(239,68,68,0.3));animation:bounce 2s ease-in-out infinite; }
-.icon-pptx { color:#d24726;font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(210,71,38,0.3));animation:bounce 2s ease-in-out infinite; }
+.icon-pdf { color:#ec3939;font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(239,68,68,0.3));animation:bounce 2s ease-in-out infinite; }
+.icon-pptx { color:#da5e5e;font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(210,71,38,0.3));animation:bounce 2s ease-in-out infinite; }
 .icon-readme { color:var(--primary);font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(79,70,229,0.3)); }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 
@@ -244,12 +244,12 @@ body::after  { width:500px;height:500px;background:radial-gradient(circle,var(--
     border:1px solid rgba(255,193,227,0.2);margin-bottom:15px;
     transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-.cert-item:hover { background:rgba(255,255,255,0.8);border-color:var(--pink-gradient-start);transform:translateX(10px);box-shadow:var(--shadow-lg),var(--glow-pink); }
+.cert-item:hover { background:rgba(63, 56, 56, 0.8);border-color:var(--pink-gradient-start);transform:translateX(10px);box-shadow:var(--shadow-lg),var(--glow-pink); }
 .cert-item i { font-size:2rem;background:linear-gradient(135deg,var(--primary),var(--pink-gradient-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:15px; }
 .cert-item span { flex:1;font-weight:600; }
 
 .btn-sm {
-    background:linear-gradient(135deg,white,var(--pink-soft));color:var(--primary);
+    background:linear-gradient(135deg,rgb(237, 153, 153),var(--pink-soft));color:var(--primary);
     padding:8px 18px;border-radius:10px;border:1px solid var(--pink-gradient-start);
     font-size:0.8rem;text-decoration:none;font-weight:700;
     transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;display:inline-block;
