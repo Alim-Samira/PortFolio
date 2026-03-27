@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+      /* ── existing helpers ── */
       .pdf-collapsible {
         display: none;
         overflow: hidden;
@@ -52,15 +53,12 @@
         gap: 10px;
         margin-top: 10px;
       }
-      /* Excel file icon color */
       .icon-xlsx { color: #217346; }
-      /* Preview iframe wrapper */
       .preview-container {
         border-radius: 8px;
         overflow: hidden;
         border: 1px solid rgba(255,255,255,0.1);
       }
-      /* Sujet blanc badge */
       .badge-exam {
         display: inline-block;
         background: rgba(234,88,12,0.15);
@@ -80,6 +78,167 @@
         color: rgba(255,255,255,0.35);
         padding: 14px 0 6px 2px;
         font-weight: 600;
+      }
+
+      /* ── certifications ── */
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 14px;
+        margin-top: 10px;
+      }
+      .cert-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 12px;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+      .cert-card:hover {
+        border-color: rgba(99,102,241,0.35);
+        transform: translateY(-3px);
+      }
+      .cert-card-title {
+        font-size: 0.88rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: rgba(255,255,255,0.88);
+      }
+      .cert-card-title i {
+        color: #6366f1;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .cert-card-footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+      /* Fortinet highlight card */
+      .cert-card-featured {
+        background: linear-gradient(135deg, rgba(220,38,38,0.08), rgba(239,68,68,0.04));
+        border: 1px solid rgba(239,68,68,0.28);
+        border-radius: 14px;
+        padding: 22px 20px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 24px;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+      .cert-card-featured:hover {
+        border-color: rgba(239,68,68,0.5);
+        transform: translateY(-3px);
+      }
+      .cert-featured-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #dc2626, #ef4444);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: #fff;
+        flex-shrink: 0;
+        box-shadow: 0 4px 18px rgba(239,68,68,0.3);
+      }
+      .cert-featured-body {
+        flex: 1;
+        min-width: 0;
+      }
+      .cert-featured-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #ef4444;
+        margin-bottom: 4px;
+      }
+      .cert-featured-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.92);
+        margin-bottom: 2px;
+      }
+      .cert-featured-sub {
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.45);
+      }
+      /* modules collapsible */
+      .modules-toggle-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(99,102,241,0.08);
+        border: 1px solid rgba(99,102,241,0.22);
+        border-radius: 8px;
+        padding: 9px 16px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #a5b4fc;
+        transition: background 0.2s;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 4px;
+      }
+      .modules-toggle-btn:hover {
+        background: rgba(99,102,241,0.15);
+      }
+      .modules-toggle-btn .chevron {
+        transition: transform 0.25s;
+        font-size: 0.75rem;
+      }
+      .modules-toggle-btn.open .chevron {
+        transform: rotate(180deg);
+      }
+      /* add-cert comment area */
+      .add-cert-area {
+        margin-top: 24px;
+        border: 1px dashed rgba(255,255,255,0.15);
+        border-radius: 12px;
+        padding: 20px;
+        background: rgba(255,255,255,0.02);
+      }
+      .add-cert-area-title {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.35);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      /* Template card inside comment area */
+      .cert-card-template {
+        background: rgba(255,255,255,0.03);
+        border: 1px dashed rgba(99,102,241,0.2);
+        border-radius: 12px;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        opacity: 0.5;
+      }
+      .cert-stars {
+        display: flex;
+        gap: 4px;
+        margin-top: 4px;
+      }
+      .cert-stars i {
+        color: #f59e0b;
+        font-size: 0.8rem;
+      }
+      .cert-stars i.empty {
+        color: rgba(255,255,255,0.15);
       }
     </style>
 </head>
@@ -107,8 +266,8 @@
                 <h1>Alim Samira</h1>
                 <p class="desc">Expertise en gestion des Systèmes d'Information.</p>
                 <div class="cta-group">
-                    <a href="assets/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Alternance</a>
-                    <a href="assets/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Stage</a>
+                    <a href="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Alternance</a>
+                    <a href="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Stage</a>
                     <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" rel="noopener" class="btn-sub"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
@@ -118,43 +277,41 @@
         <section id="travaux" class="page">
             <h2 class="section-title">Travaux Dirigés &amp; Exercices</h2>
 
-            <!-- ── TP Odoo ─────────────────────────────────────── -->
+            <!-- ── TP Odoo ── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>TP Odoo - edu-techshop</span></div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-odoo', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/TP_Odoo_Samira.pdf" download="TP_Odoo_Samira.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/TP/TP_Odoo_Samira.pdf" download="TP_Odoo_Samira.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Gestion complète du cycle : Achats, Stocks et Ventes.</p>
                 <div id="prev-odoo" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/TP_Odoo_Samira.pdf" width="100%" height="500px" style="border:none;"
-                                title="TP Odoo"></iframe>
+                        <iframe src="assets/TP/TP_Odoo_Samira.pdf" width="100%" height="500px" style="border:none;" title="TP Odoo"></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- ── TP HubSpot ──────────────────────────────────── -->
+            <!-- ── TP HubSpot ── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>TP Découverte HubSpot</span></div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-hubspot', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/TP_Découverte_HubSpot_.pdf" download="TP_Découverte_HubSpot.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/TP/TP_D%C3%A9couverte_HubSpot_.pdf" download="TP_Découverte_HubSpot.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Mise en pratique sur le CRM SaaS HubSpot.</p>
                 <div id="prev-hubspot" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/TP_Découverte_HubSpot_.pdf" width="100%" height="500px" style="border:none;"
-                                title="TP HubSpot"></iframe>
+                        <iframe src="assets/TP/TP_D%C3%A9couverte_HubSpot_.pdf" width="100%" height="500px" style="border:none;" title="TP HubSpot"></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- ── TD + QCM ────────────────────────────────────── -->
+            <!-- ── TD + QCM ── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -162,15 +319,15 @@
                         <span>TD + QCM — Communication Digitale</span>
                     </div>
                     <div class="file-actions">
-                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/6-%20Td%20%2B%20QCM%20pour%20%C3%A9tudiants.docx"
+                        <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/cours/6-%20Td%20%2B%20QCM%20pour%20%C3%A9tudiants.docx"
                            target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                        <a href="assets/6-%20Td%20%2B%20QCM%20pour%20%C3%A9tudiants.docx" download="6- Td + QCM pour étudiants.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/cours/6-%20Td%20%2B%20QCM%20pour%20%C3%A9tudiants.docx" download="6- Td + QCM pour étudiants.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">TD noté · Questions de cours · QCM · Communication Digitale &amp; KPI.</p>
             </div>
 
-            <!-- ── TP KPI Excel ────────────────────────────────── -->
+            <!-- ── TP KPI Excel ── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -188,7 +345,7 @@
                 </div>
             </div>
 
-            <!-- ── Étude de cas KPI ────────────────────────────── -->
+            <!-- ── Étude de cas KPI ── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -197,19 +354,18 @@
                     </div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-etude', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/5-%20%C3%89tude%20de%20cas%20KPI.pdf" download="5- Étude de cas KPI.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/cours/5-%20%C3%89tude%20de%20cas%20KPI.pdf" download="5- Étude de cas KPI.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Analyse complète d'une campagne digitale multi-canal · CTR · CPC · CPA · ROI · Recommandations stratégiques.</p>
                 <div id="prev-etude" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/5-%20%C3%89tude%20de%20cas%20KPI.pdf" width="100%" height="500px" style="border:none;"
-                                title="Étude de cas KPI"></iframe>
+                        <iframe src="assets/cours/5-%20%C3%89tude%20de%20cas%20KPI.pdf" width="100%" height="500px" style="border:none;" title="Étude de cas KPI"></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- ── Sujet Blanc ─────────────────────────────────── -->
+            <!-- ── Sujet Blanc ── -->
             <div class="glass-card">
                 <div class="file-header">
                     <div class="file-title">
@@ -218,14 +374,13 @@
                     </div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-sujet', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/7-%20sujet%20blanc.pdf" download="7- sujet blanc.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/cours/7-%20sujet%20blanc.pdf" download="7- sujet blanc.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Sujet d'entraînement complet · 5 parties : Concepts · Étude de cas · Stratégie digitale · Dimension technique MIAGE · Enjeux éthiques.</p>
                 <div id="prev-sujet" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/7-%20sujet%20blanc.pdf" width="100%" height="600px" style="border:none;"
-                                title="Sujet Blanc Communication Digitale"></iframe>
+                        <iframe src="assets/cours/7-%20sujet%20blanc.pdf" width="100%" height="600px" style="border:none;" title="Sujet Blanc Communication Digitale"></iframe>
                     </div>
                 </div>
             </div>
@@ -235,7 +390,6 @@
         <!-- ══════════════════════ COURS ════════════════════════ -->
         <section id="cours" class="page">
             <h2 class="section-title">Supports de Cours</h2>
-
             <div class="grid">
 
                 <!-- 1 - Fiche cours -->
@@ -246,9 +400,9 @@
                             <span>1- fiche cours V_E</span>
                         </div>
                         <div class="file-actions">
-                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/1-%20fiche%20cours%20V_E.docx"
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/cours/1-%20fiche%20cours%20V_E.docx"
                                target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                            <a href="assets/1-%20fiche%20cours%20V_E.docx" download="1- fiche cours V_E.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/1-%20fiche%20cours%20V_E.docx" download="1- fiche cours V_E.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">Introduction à la communication digitale · Concepts fondamentaux.</p>
@@ -262,9 +416,9 @@
                             <span>2- Pourquoi Étudier le funnel marketing V_E</span>
                         </div>
                         <div class="file-actions">
-                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/2-%20Pourquoi%20%C3%89tudier%20le%20funnel%20marketing%20V_E.docx"
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/cours/2-%20Pourquoi%20%C3%89tudier%20le%20funnel%20marketing%20V_E.docx"
                                target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                            <a href="assets/2-%20Pourquoi%20%C3%89tudier%20le%20funnel%20marketing%20V_E.docx" download="2- Pourquoi Étudier le funnel marketing V_E.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/2-%20Pourquoi%20%C3%89tudier%20le%20funnel%20marketing%20V_E.docx" download="2- Pourquoi Étudier le funnel marketing V_E.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">Enjeux du tunnel de conversion · TOFU / MOFU / BOFU.</p>
@@ -278,9 +432,9 @@
                             <span>3- création de funnel marketing</span>
                         </div>
                         <div class="file-actions">
-                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/3-%20cr%C3%A9ation%20de%20funnel%20marketing.docx"
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/cours/3-%20cr%C3%A9ation%20de%20funnel%20marketing.docx"
                                target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                            <a href="assets/3-%20cr%C3%A9ation%20de%20funnel%20marketing.docx" download="3- création de funnel marketing.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/3-%20cr%C3%A9ation%20de%20funnel%20marketing.docx" download="3- création de funnel marketing.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">Étapes de conception · Canaux d'acquisition · Automatisation.</p>
@@ -295,19 +449,18 @@
                         </div>
                         <div class="file-actions">
                             <button class="btn-icon" onclick="togglePreview('prev-pipeline', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                            <a href="assets/3-%20pipeline%20vs%20funnel.pdf" download="3- pipeline vs funnel.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/3-%20pipeline%20vs%20funnel.pdf" download="3- pipeline vs funnel.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">Comparatif Pipeline commercial vs Funnel marketing · Différences clés.</p>
                     <div id="prev-pipeline" class="pdf-collapsible">
                         <div class="preview-container">
-                            <iframe src="assets/3-%20pipeline%20vs%20funnel.pdf" width="100%" height="500px" style="border:none;"
-                                    title="Pipeline vs Funnel"></iframe>
+                            <iframe src="assets/cours/3-%20pipeline%20vs%20funnel.pdf" width="100%" height="500px" style="border:none;" title="Pipeline vs Funnel"></iframe>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4 - KPI Indicateurs (note: underscore 4_) -->
+                <!-- 4 - KPI Indicateurs -->
                 <div class="glass-card">
                     <div class="file-header">
                         <div class="file-title">
@@ -315,9 +468,9 @@
                             <span>4_ Les indicateurs KPI V_E</span>
                         </div>
                         <div class="file-actions">
-                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/4_%20Les%20indicateurs%20KPI%20V_E.docx"
+                            <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/PortFolio/main/assets/cours/4_%20Les%20indicateurs%20KPI%20V_E.docx"
                                target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                            <a href="assets/4_%20Les%20indicateurs%20KPI%20V_E.docx" download="4_ Les indicateurs KPI V_E.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/4_%20Les%20indicateurs%20KPI%20V_E.docx" download="4_ Les indicateurs KPI V_E.docx" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">CTR · CPC · CPA · ROI · Outils d'analyse · Google Analytics · Meta Ads.</p>
@@ -328,8 +481,8 @@
                     <div class="file-header">
                         <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Introduction au CRM</span></div>
                         <div class="file-actions">
-                            <a href="assets/Copie%20de%201-%20CRM%20version%20Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                            <a href="assets/Copie%20de%201-%20CRM%20version%20Etudiant.docx.pdf" download="Introduction_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/Copie%20de%201-%20CRM%20version%20Etudiant.docx.pdf" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/cours/Copie%20de%201-%20CRM%20version%20Etudiant.docx.pdf" download="Introduction_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">Concepts fondamentaux et enjeux du CRM.</p>
@@ -340,8 +493,8 @@
                     <div class="file-header">
                         <div class="file-title"><i class="fas fa-file-pdf icon-pdf"></i><span>Lexique Technique CRM</span></div>
                         <div class="file-actions">
-                            <a href="assets/2-%20termes%20techniques%20CRM%20version%20Etudiant.pdf" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                            <a href="assets/2-%20termes%20techniques%20CRM%20version%20Etudiant.pdf" download="Lexique_Technique_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                            <a href="assets/cours/2-%20termes%20techniques%20CRM%20version%20Etudiant.pdf" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            <a href="assets/cours/2-%20termes%20techniques%20CRM%20version%20Etudiant.pdf" download="Lexique_Technique_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                     <p class="comp">Terminologie métier Systèmes d'Information.</p>
@@ -353,13 +506,173 @@
         <!-- ══════════════════════ CERTIFS ══════════════════════ -->
         <section id="certifs" class="page">
             <h2 class="section-title">Certifications</h2>
+
+            <!-- Fortinet featured card -->
+            <div class="cert-card-featured">
+                <div class="cert-featured-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div class="cert-featured-body">
+                    <div class="cert-featured-label">Certification Officielle</div>
+                    <div class="cert-featured-name">Fortinet Certified Associate in Cybersecurity</div>
+                    <div class="cert-featured-sub">Cybersécurité · Fortinet Training Institute</div>
+                    <div class="cert-stars" style="margin-top: 8px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <a href="assets/certifications/Fortinet_Certified_Associate_in_Cybersecurity.pdf"
+                   target="_blank" rel="noopener" class="btn-main" style="flex-shrink:0;">
+                    <i class="fas fa-eye"></i> Consulter
+                </a>
+            </div>
+
+            <!-- Modules collapsible group -->
             <div class="glass-card">
-                <div class="cert-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Attestation Odoo Education</span>
-                    <a href="assets/certificat_odoo.pdf" target="_blank" rel="noopener" class="btn-sm">Consulter</a>
+                <button class="modules-toggle-btn" id="modules-btn" onclick="toggleModules()">
+                    <span><i class="fas fa-layer-group" style="margin-right:8px;"></i>Attestations &amp; Certificats de modules</span>
+                    <i class="fas fa-chevron-down chevron"></i>
+                </button>
+
+                <div id="modules-list" style="display:none; margin-top: 12px;">
+                    <div class="cert-grid">
+
+                        <div class="cert-card">
+                            <div class="cert-card-title">
+                                <i class="fas fa-certificate"></i>
+                                Attestation de suivi — Module 2
+                            </div>
+                            <div class="cert-card-footer">
+                                <a href="assets/certifications/Attestation%20de%20suivi_module2.pdf"
+                                   target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="cert-card">
+                            <div class="cert-card-title">
+                                <i class="fas fa-certificate"></i>
+                                Attestation de suivi — Module 6
+                            </div>
+                            <div class="cert-card-footer">
+                                <a href="assets/certifications/Attestation%20de%20suivi_module6.pdf"
+                                   target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="cert-card">
+                            <div class="cert-card-title">
+                                <i class="fas fa-award"></i>
+                                Certificat — Module 1
+                            </div>
+                            <div class="cert-card-footer">
+                                <a href="assets/certifications/Certificat_module1.pdf"
+                                   target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="cert-card">
+                            <div class="cert-card-title">
+                                <i class="fas fa-award"></i>
+                                Certificat — Module 3
+                            </div>
+                            <div class="cert-card-footer">
+                                <a href="assets/certifications/Certificat_Module3.pdf"
+                                   target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="cert-card">
+                            <div class="cert-card-title">
+                                <i class="fas fa-award"></i>
+                                Certificat — Module 4
+                            </div>
+                            <div class="cert-card-footer">
+                                <a href="assets/certifications/Certificat_module4.pdf"
+                                   target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="cert-card">
+                            <div class="cert-card-title">
+                                <i class="fas fa-award"></i>
+                                Certificat — Module 5
+                            </div>
+                            <div class="cert-card-footer">
+                                <a href="assets/certifications/Certificat_module5.pdf"
+                                   target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
+            <!-- ADD CERTIFICATION COMMENT AREA -->
+            <!-- ================================================================
+                 ZONE D'AJOUT DE CERTIFICATIONS
+                 Pour ajouter une certification, copiez le bloc .cert-card ci-dessous
+                 et remplacez :
+                   - "Nom de la certification"  → le titre de votre certificat
+                   - "Sous-titre / organisme"   → l'organisme émetteur
+                   - href="#"                   → le chemin vers votre fichier PDF
+                   - Les étoiles fas fa-star    → pleine  |  far fa-star → vide
+                 ================================================================ -->
+            <div class="add-cert-area">
+                <div class="add-cert-area-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Ajouter une certification
+                </div>
+
+                <!-- MODELE A COPIER-COLLER
+                <div class="cert-card">
+                    <div class="cert-card-title">
+                        <i class="fas fa-certificate"></i>
+                        Nom de la certification
+                    </div>
+                    <div style="font-size:0.78rem; color:rgba(255,255,255,0.45); padding-left: 25px;">
+                        Sous-titre / organisme
+                    </div>
+                    <div class="cert-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star empty"></i>
+                        <i class="far fa-star empty"></i>
+                    </div>
+                    <div class="cert-card-footer">
+                        <a href="#" target="_blank" rel="noopener" class="btn-icon" title="Visualiser">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </div>
+                </div>
+                -->
+
+                <!-- Aperçu du modèle (visible, grisé) -->
+                <div class="cert-card-template">
+                    <div class="cert-card-title" style="opacity:0.5;">
+                        <i class="fas fa-certificate"></i>
+                        Nom de la certification
+                    </div>
+                    <div style="font-size:0.78rem; color:rgba(255,255,255,0.25); padding-left: 25px;">
+                        Sous-titre / organisme
+                    </div>
+                    <div class="cert-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star empty"></i>
+                        <i class="far fa-star empty"></i>
+                    </div>
+                    <div class="cert-card-footer">
+                        <span class="btn-icon" style="opacity:0.4; cursor:default;"><i class="fas fa-eye"></i></span>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
 
         <!-- ══════════════════════ PROJET CRM ═══════════════════ -->
@@ -401,28 +714,28 @@
 
                         <div class="img-card-inner">
                             <h4 style="font-size: 0.85rem; margin-bottom: 8px;">MCD</h4>
-                            <img src="assets/MCD%20(Mod%C3%A8le%20Conceptuel%20de%20Donn%C3%A9es).png" class="img-preview" alt="MCD" onclick="window.open(this.src)">
+                            <img src="assets/CRM/MCD%20(Mod%C3%A8le%20Conceptuel%20de%20Donn%C3%A9es).png" class="img-preview" alt="MCD" onclick="window.open(this.src)">
                             <div class="img-card-actions">
-                                <a href="assets/MCD%20(Mod%C3%A8le%20Conceptuel%20de%20Donn%C3%A9es).png" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                                <a href="assets/MCD%20(Mod%C3%A8le%20Conceptuel%20de%20Donn%C3%A9es).png" download="MCD_Samira.png" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                                <a href="assets/CRM/MCD%20(Mod%C3%A8le%20Conceptuel%20de%20Donn%C3%A9es).png" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                                <a href="assets/CRM/MCD%20(Mod%C3%A8le%20Conceptuel%20de%20Donn%C3%A9es).png" download="MCD_Samira.png" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                             </div>
                         </div>
 
                         <div class="img-card-inner">
                             <h4 style="font-size: 0.85rem; margin-bottom: 8px;">ER Diagram</h4>
-                            <img src="assets/ER%20Diagram.png" class="img-preview" alt="ERD" onclick="window.open(this.src)">
+                            <img src="assets/CRM/ER%20Diagram.png" class="img-preview" alt="ERD" onclick="window.open(this.src)">
                             <div class="img-card-actions">
-                                <a href="assets/ER%20Diagram.png" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                                <a href="assets/ER%20Diagram.png" download="ER_Diagram_Samira.png" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                                <a href="assets/CRM/ER%20Diagram.png" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                                <a href="assets/CRM/ER%20Diagram.png" download="ER_Diagram_Samira.png" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                             </div>
                         </div>
 
                         <div class="img-card-inner">
                             <h4 style="font-size: 0.85rem; margin-bottom: 8px;">Diagramme UML</h4>
-                            <img src="assets/Diagramme%20de%20Classes%20UML.png" class="img-preview" alt="UML" onclick="window.open(this.src)">
+                            <img src="assets/CRM/Diagramme%20de%20Classes%20UML.png" class="img-preview" alt="UML" onclick="window.open(this.src)">
                             <div class="img-card-actions">
-                                <a href="assets/Diagramme%20de%20Classes%20UML.png" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                                <a href="assets/Diagramme%20de%20Classes%20UML.png" download="UML_Samira.png" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                                <a href="assets/CRM/Diagramme%20de%20Classes%20UML.png" target="_blank" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
+                                <a href="assets/CRM/Diagramme%20de%20Classes%20UML.png" download="UML_Samira.png" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                             </div>
                         </div>
 
@@ -438,7 +751,7 @@
                     </div>
                     <div class="file-actions">
                         <a href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/Alim-Samira/aaas-crm/main/public/AAAS_CRM_ALIM_SAMIRA.pptx" target="_blank" rel="noopener" class="btn-icon" title="Visualiser"><i class="fas fa-eye"></i></a>
-                        <a href="assets/AAAS_CRM_ALIM_SAMIRA.pptx" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/CRM/AAAS_CRM_ALIM_SAMIRA.pptx" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Support visuel · Architecture &amp; Stack technique</p>
@@ -452,14 +765,13 @@
                     </div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="togglePreview('prev-rapport', this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/Rapport_Projet_AAAS_CRM.pdf" download="Rapport_Projet_AAAS_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/CRM/Rapport_Projet_AAAS_CRM.pdf" download="Rapport_Projet_AAAS_CRM.pdf" class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Modélisation · Architecture · Fonctionnalités · Déploiement</p>
                 <div id="prev-rapport" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/Rapport_Projet_AAAS_CRM.pdf" width="100%" height="600px" style="border:none;"
-                                title="Rapport Projet AAAS CRM"></iframe>
+                        <iframe src="assets/CRM/Rapport_Projet_AAAS_CRM.pdf" width="100%" height="600px" style="border:none;" title="Rapport Projet AAAS CRM"></iframe>
                     </div>
                 </div>
             </div>
@@ -499,7 +811,15 @@
         if (!el) return;
         const isHidden = el.style.display === '' || el.style.display === 'none';
         el.style.display = isHidden ? 'block' : 'none';
-        btn.classList.toggle('active', isHidden);
+        if (btn) btn.classList.toggle('active', isHidden);
+      }
+
+      function toggleModules() {
+        const list = document.getElementById('modules-list');
+        const btn  = document.getElementById('modules-btn');
+        const isHidden = list.style.display === 'none' || list.style.display === '';
+        list.style.display = isHidden ? 'block' : 'none';
+        btn.classList.toggle('open', isHidden);
       }
 
       function showPage(pageId, navEl) {
