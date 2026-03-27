@@ -240,8 +240,8 @@ body::after  { width:500px;height:500px;background:radial-gradient(circle,var(--
 /* ── Certifications ─────────────────────────────────────────── */
 .cert-item {
     display:flex;align-items:center;justify-content:space-between;
-    padding:20px;background:rgba(255,255,255,0.5);border-radius:16px;
-    border:1px solid rgba(255,193,227,0.2);margin-bottom:15px;
+    padding:20px;background:rgba(0, 0, 0, 0.5);border-radius:16px;
+    border:1px solid rgba(0, 0, 0, 0.2);margin-bottom:15px;
     transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 .cert-item:hover { background:rgba(63, 56, 56, 0.8);border-color:var(--pink-gradient-start);transform:translateX(10px);box-shadow:var(--shadow-lg),var(--glow-pink); }
