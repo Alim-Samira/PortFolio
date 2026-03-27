@@ -10,5 +10,3 @@ Remember to follow the above licensing terms.
 
 Ce projet ne relève PAS de la licence MIT malgré toute mention contraire ailleurs.
 L'auteur se réserve le droit de poursuivre toute violation des droits d'auteur.
-```
-
