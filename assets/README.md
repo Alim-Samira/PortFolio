@@ -47,15 +47,15 @@ Live → [aaas-crm.vercel.app](https://aaas-crm.vercel.app) · Code → [github.
 
 | Module | Description | Nouveautés v2 |
 |--------|-------------|---------------|
-| 🔐 **Authentification** | Login · Signup · JWT · 4 rôles RBAC | Master Admin protégé |
-| 🎯 **Pipeline Kanban** | 6 étapes · Drag-and-drop · Valeur · Assign à un user | ✅ Assignation utilisateur |
-| 👤 **Contacts** | CRUD complet · Recherche · Filtres | — |
-| 🏢 **Entreprises** | Annuaire · Association contacts | — |
+|  **Authentification** | Login · Signup · JWT · 4 rôles RBAC | Master Admin protégé |
+|  **Pipeline Kanban** | 6 étapes · Drag-and-drop · Valeur · Assign à un user | ✅ Assignation utilisateur |
+| **Contacts** | CRUD complet · Recherche · Filtres | — |
+| **Entreprises** | Annuaire · Association contacts | — |
 | ✅ **Tâches** | Kanban · Priorité · Échéances · Assign + notifications | ✅ Notifications temps réel |
-| 📊 **Dashboard** | KPIs · Recharts · Taux de conversion · CA | — |
-| 📧 **Campagnes Email** | Brevo · Templates · Ciblage par rôle · Click tracking | ✅ Fix ciblage + tracking |
-| ⚙️ **Paramètres** | Gestion users · Master Admin · Permissions · Sous-admins | ✅ Hiérarchie admin |
-| 🔔 **Notifications** | Bell temps réel · Tâches assignées · Statut modifiable | ✅ Nouveau |
+| **Dashboard** | KPIs · Recharts · Taux de conversion · CA | — |
+|**Campagnes Email** | Brevo · Templates · Ciblage par rôle · Click tracking | ✅ Fix ciblage + tracking |
+| **Paramètres** | Gestion users · Master Admin · Permissions · Sous-admins | ✅ Hiérarchie admin |
+| **Notifications** | Bell temps réel · Tâches assignées · Statut modifiable | ✅ Nouveau |
 
 ---
 
