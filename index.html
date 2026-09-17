@@ -284,14 +284,60 @@
 
         <!-- ══════════════════════ ACCUEIL ══════════════════════ -->
         <section id="about" class="page active">
-            <div class="glass-card hero">
-                <span class="badge">Étudiante </span>
-                <h1>Alim Samira</h1>
-                <p class="desc">Expertise en gestion des Systèmes d'Information.</p>
-                <div class="cta-group">
-                    <a href="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Alternance</a>
-                    <a href="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Stage</a>
-                    <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" rel="noopener" class="btn-sub"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <div class="game-hero" id="gameHero">
+                <canvas id="particleCanvas" class="particle-canvas"></canvas>
+                <div class="hero-vignette"></div>
+
+                <div class="hero-content">
+                    <span class="badge">Étudiante</span>
+                    <h1>Alim Samira</h1>
+                    <p class="desc">Expertise en gestion des Systèmes d'Information.</p>
+
+                    <div class="portrait-stage" id="portraitStage">
+                        <button class="world-nav world-nav-prev" id="worldPrev" aria-label="Univers précédent" type="button">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+
+                        <div class="portrait-frame" id="portraitFrame">
+                            <div class="frame-orbit"></div>
+                            <div class="frame-ring"></div>
+                            <div class="frame-glow"></div>
+                            <div class="frame-inner">
+                                <img src="assets/portrait.jpg" alt="Portrait d'Alim Samira" class="portrait-img" id="portraitImg">
+                                <div class="frame-scanline"></div>
+                                <div class="frame-shine"></div>
+                            </div>
+                            <div class="frame-tag" id="frameTag">Chapitre 01</div>
+                        </div>
+
+                        <button class="world-nav world-nav-next" id="worldNext" aria-label="Univers suivant" type="button">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="world-caption" id="worldCaption">
+                            <span class="world-icon" id="worldIcon"><i class="fas fa-book-open"></i></span>
+                            <div class="world-text">
+                                <div class="world-title" id="worldTitle">Lecture</div>
+                                <div class="world-sub" id="worldSub">Livres, histoires &amp; imagination</div>
+                            </div>
+                        </div>
+
+                        <div class="world-dots" id="worldDots">
+                            <button class="world-dot active" data-index="0" aria-label="Univers Lecture" type="button"></button>
+                            <button class="world-dot" data-index="1" aria-label="Univers Création de jeux" type="button"></button>
+                            <button class="world-dot" data-index="2" aria-label="Univers Montage vidéo" type="button"></button>
+                            <button class="world-dot" data-index="3" aria-label="Univers Écriture" type="button"></button>
+                        </div>
+                    </div>
+
+                    <div class="cta-group" id="ctaGroup">
+                        <span class="stair-step step-1" aria-hidden="true"></span>
+                        <span class="stair-step step-2" aria-hidden="true"></span>
+                        <span class="stair-step step-3" aria-hidden="true"></span>
+                        <a href="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main stair-btn" style="--stair-index:0"><i class="fas fa-file-pdf"></i> CV Alternance</a>
+                        <a href="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main stair-btn" style="--stair-index:1"><i class="fas fa-file-pdf"></i> CV Stage</a>
+                        <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" rel="noopener" class="btn-sub linkedin-fade"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -876,5 +922,6 @@
         navEl.classList.add('active');
       }
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
