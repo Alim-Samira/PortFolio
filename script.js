@@ -191,3 +191,281 @@ document.addEventListener('DOMContentLoaded', () => {
 // Console
 console.log('%c Portfolio - Alim Samira ', 'background:linear-gradient(135deg,#4f46e5,#ffc1e3);color:white;padding:12px 20px;border-radius:8px;font-size:16px;font-weight:bold;');
 console.log('%c Glassmorphism Design with Pink Gradient ✨', 'color:#ffc1e3;font-size:12px;font-weight:600;');
+
+// ═══════════════════════════════════════════════════════════════
+// GAME HERO — expérience interactive de la page d'accueil
+// (scindée du reste : n'affecte que #about)
+// ═══════════════════════════════════════════════════════════════
+(function () {
+    const WORLDS = [
+        {
+            key: 'lecture',
+            icon: 'fa-book-open',
+            title: 'Lecture',
+            sub: "Livres, histoires & imagination",
+            accent: '#818cf8',
+            tag: 'Chapitre 01'
+        },
+        {
+            key: 'jeux',
+            icon: 'fa-gamepad',
+            title: 'Création de jeux',
+            sub: 'Game dev, créativité, mondes interactifs',
+            accent: '#ff9ec9',
+            tag: 'Chapitre 02'
+        },
+        {
+            key: 'video',
+            icon: 'fa-clapperboard',
+            title: 'Montage vidéo',
+            sub: 'Narration visuelle, mouvement, cinéma',
+            accent: '#ffc1e3',
+            tag: 'Chapitre 03'
+        },
+        {
+            key: 'ecriture',
+            icon: 'fa-pen-nib',
+            title: 'Écriture',
+            sub: 'Idées, récits, personnages, créativité',
+            accent: '#4f46e5',
+            tag: 'Chapitre 04'
+        }
+    ];
+
+    let currentWorld = 0;
+    let autoplayTimer = null;
+    let isFlipping = false;
+
+    function $(id) { return document.getElementById(id); }
+
+    function applyWorld(index) {
+        const world = WORLDS[index];
+        const frame = $('portraitFrame');
+        const stage = $('portraitStage');
+        if (!frame) return;
+
+        // set on the shared ancestor so ring, glow, caption icon and dots all inherit it
+        (stage || frame).style.setProperty('--world-accent', world.accent);
+        $('worldIcon').innerHTML = `<i class="fas ${world.icon}"></i>`;
+        $('worldTitle').textContent = world.title;
+        $('worldSub').textContent = world.sub;
+        $('frameTag').textContent = world.tag;
+
+        document.querySelectorAll('.world-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+
+        // re-trigger caption entrance animations
+        ['worldIcon', 'worldTitle', 'worldSub'].forEach(id => {
+            const el = $(id);
+            if (!el) return;
+            el.style.animation = 'none';
+            void el.offsetWidth; // reflow
+            el.style.animation = '';
+        });
+
+        spawnBurst(world);
+    }
+
+    function goToWorld(index, restartAutoplay = true) {
+        if (isFlipping) return;
+        const frame = $('portraitFrame');
+        if (!frame) return;
+        isFlipping = true;
+
+        const next = (index + WORLDS.length) % WORLDS.length;
+        frame.classList.add('flip-out');
+
+        setTimeout(() => {
+            currentWorld = next;
+            applyWorld(currentWorld);
+            frame.classList.remove('flip-out');
+            frame.classList.add('flip-in');
+            setTimeout(() => {
+                frame.classList.remove('flip-in');
+                isFlipping = false;
+            }, 350);
+        }, 350);
+
+        if (restartAutoplay) restartAutoplayTimer();
+    }
+
+    function restartAutoplayTimer() {
+        clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(() => goToWorld(currentWorld + 1, false), 6000);
+    }
+
+    // ── Particles ("chapter" themed floating icons) ──────────────
+    function spawnBurst(world) {
+        const hero = $('gameHero');
+        if (!hero) return;
+        const rect = hero.getBoundingClientRect();
+        const stage = $('portraitStage');
+        if (!stage) return;
+        const stageRect = stage.getBoundingClientRect();
+        const originX = stageRect.left - rect.left + stageRect.width / 2;
+        const originY = stageRect.top - rect.top + stageRect.height / 2;
+
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => spawnParticle(hero, world, originX, originY), i * 90);
+        }
+    }
+
+    function spawnParticle(hero, world, originX, originY) {
+        const p = document.createElement('i');
+        p.className = `hero-particle fas ${world.icon}`;
+        const angle = Math.random() * Math.PI * 2;
+        const radius = 60 + Math.random() * 90;
+        const x = originX + Math.cos(angle) * radius;
+        const y = originY + Math.sin(angle) * radius * 0.6;
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        p.style.setProperty('--world-accent', world.accent);
+        p.style.fontSize = `${0.7 + Math.random() * 0.6}rem`;
+        hero.appendChild(p);
+        setTimeout(() => p.remove(), 4600);
+    }
+
+    // ── Ambient background particles (idle, slower) ──────────────
+    function startAmbientParticles() {
+        setInterval(() => {
+            const hero = $('gameHero');
+            if (!hero) return;
+            const world = WORLDS[currentWorld];
+            const rect = hero.getBoundingClientRect();
+            const p = document.createElement('i');
+            p.className = `hero-particle fas ${world.icon}`;
+            p.style.left = `${Math.random() * rect.width}px`;
+            p.style.top = `${rect.height - 20}px`;
+            p.style.setProperty('--world-accent', world.accent);
+            p.style.fontSize = '0.6rem';
+            p.style.opacity = '0.35';
+            hero.appendChild(p);
+            setTimeout(() => p.remove(), 4600);
+        }, 1400);
+    }
+
+    // ── Parallax tilt on portrait frame ───────────────────────────
+    function initParallax() {
+        const stage = $('portraitStage');
+        const frame = $('portraitFrame');
+        if (!stage || !frame) return;
+
+        stage.addEventListener('mousemove', (e) => {
+            if (isFlipping) return;
+            const rect = frame.getBoundingClientRect();
+            const relX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+            const relY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+            const rotY = Math.max(-1, Math.min(1, relX)) * 12;
+            const rotX = Math.max(-1, Math.min(1, relY)) * -12;
+            frame.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+        });
+        stage.addEventListener('mouseleave', () => {
+            if (!isFlipping) frame.style.transform = 'rotateY(0) rotateX(0)';
+        });
+
+        stage.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+        stage.addEventListener('mouseleave', () => restartAutoplayTimer());
+    }
+
+    // ── Controls ──────────────────────────────────────────────────
+    function initControls() {
+        const prev = $('worldPrev');
+        const next = $('worldNext');
+        if (prev) prev.addEventListener('click', () => goToWorld(currentWorld - 1));
+        if (next) next.addEventListener('click', () => goToWorld(currentWorld + 1));
+
+        document.querySelectorAll('.world-dot').forEach(dot => {
+            dot.addEventListener('click', () => goToWorld(parseInt(dot.dataset.index, 10)));
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const aboutPage = $('about');
+            if (!aboutPage || !aboutPage.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') goToWorld(currentWorld - 1);
+            if (e.key === 'ArrowRight') goToWorld(currentWorld + 1);
+        });
+    }
+
+    // ── Lightweight canvas starfield / sparkle background ─────────
+    function initCanvas() {
+        const canvas = $('particleCanvas');
+        const hero = $('gameHero');
+        if (!canvas || !hero) return;
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        let raf = null;
+
+        function resize() {
+            const rect = hero.getBoundingClientRect();
+            canvas.width = rect.width * devicePixelRatio;
+            canvas.height = rect.height * devicePixelRatio;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+            const count = Math.round((rect.width * rect.height) / 9000);
+            dots = Array.from({ length: Math.max(18, Math.min(50, count)) }, () => ({
+                x: Math.random() * rect.width,
+                y: Math.random() * rect.height,
+                r: Math.random() * 1.6 + 0.4,
+                s: Math.random() * 0.3 + 0.05,
+                o: Math.random() * 0.5 + 0.2
+            }));
+        }
+
+        function tick() {
+            const rect = hero.getBoundingClientRect();
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            const accent = getComputedStyle($('portraitFrame') || document.body)
+                .getPropertyValue('--world-accent') || '#818cf8';
+            dots.forEach(d => {
+                d.y -= d.s;
+                if (d.y < -4) d.y = rect.height + 4;
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                ctx.fillStyle = accent.trim();
+                ctx.globalAlpha = d.o;
+                ctx.fill();
+            });
+            ctx.globalAlpha = 1;
+            raf = requestAnimationFrame(tick);
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+        tick();
+    }
+
+    function replayEntrance() {
+        const hero = $('gameHero');
+        if (!hero) return;
+        hero.classList.remove('replay');
+        void hero.offsetWidth;
+        hero.classList.add('replay');
+    }
+
+    // Hook into navigation so the intro replays when returning home
+    const originalShowPage = window.showPage;
+    if (typeof originalShowPage === 'function') {
+        window.showPage = function (pageId, clickedLink) {
+            originalShowPage(pageId, clickedLink);
+            if (pageId === 'about') setTimeout(replayEntrance, 320);
+        };
+    }
+
+    function initGameHero() {
+        if (!$('gameHero')) return;
+        applyWorld(currentWorld);
+        initControls();
+        initParallax();
+        initCanvas();
+        restartAutoplayTimer();
+        startAmbientParticles();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGameHero);
+    } else {
+        initGameHero();
+    }
+})();
