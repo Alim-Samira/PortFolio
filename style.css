@@ -754,6 +754,100 @@ html { scroll-behavior:smooth; }
     animation: fadeInUp 0.7s ease-out 0.9s forwards;
 }
 
+/* ── CV buttons + inline preview toggle ─────────────────────── */
+.cv-btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+.cv-preview-link {
+    background: linear-gradient(135deg, rgba(129,140,248,0.14), rgba(255,193,227,0.24));
+    border: 1.5px solid rgba(255,193,227,0.55);
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 13px 5px 10px;
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    animation: cutePulse 2.6s ease-in-out infinite;
+}
+.cv-preview-link i {
+    font-size: 0.72rem;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.cv-preview-link:hover {
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--pink-gradient-end));
+    border-color: transparent;
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: var(--shadow-md), var(--glow-pink);
+    animation-play-state: paused;
+}
+.cv-preview-link:hover i { animation: cuteBlink 0.5s ease; transform: scale(1.15); }
+.cv-preview-link:active { transform: translateY(0) scale(0.94); }
+.cv-preview-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--pink-gradient-end));
+    border-color: transparent;
+    box-shadow: var(--shadow-sm), var(--glow-purple);
+    animation: none;
+}
+
+@keyframes cutePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(129,140,248,0.28); }
+    50%      { box-shadow: 0 0 0 6px rgba(129,140,248,0); }
+}
+@keyframes cuteBlink {
+    0%, 100% { transform: scaleY(1) scale(1.15); }
+    45%      { transform: scaleY(0.15) scale(1.15); }
+}
+
+/* ── "Cute" eye/view buttons (Veille PDF preview) ───────────── */
+.eye-btn {
+    background: linear-gradient(135deg, rgba(129,140,248,0.16), rgba(255,193,227,0.26)) !important;
+    border: 1.5px solid rgba(255,193,227,0.55) !important;
+    color: var(--primary) !important;
+    position: relative;
+    animation: cutePulse 2.6s ease-in-out infinite;
+}
+.eye-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--pink-gradient-end)) !important;
+    color: #fff !important;
+    transform: translateY(-3px) scale(1.12) rotate(-6deg) !important;
+    animation-play-state: paused;
+}
+.eye-btn:hover i { animation: cuteBlink 0.5s ease; }
+.eye-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--pink-gradient-end)) !important;
+    color: #fff !important;
+    animation: none;
+}
+
+.cv-previews {
+    max-width: 700px;
+    margin: 22px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.cv-preview-panel {
+    display: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    animation: fadeInUp 0.5s ease-out both;
+}
+.cv-preview-panel .preview-container {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
 /* ── Role tagline (under name) ──────────────────────────────── */
 .role-tagline {
     font-size: 0.78rem;
