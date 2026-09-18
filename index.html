@@ -291,6 +291,7 @@
                 <div class="hero-content">
                     <span class="badge">Étudiante</span>
                     <h1>Alim Samira</h1>
+                    <p class="role-tagline">MARKETING · CREATION · TECHNOLOGY</p>
                     <p class="desc">Expertise en gestion des Systèmes d'Information.</p>
 
                     <div class="portrait-stage" id="portraitStage">
@@ -337,6 +338,11 @@
                         <a href="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main stair-btn" style="--stair-index:0"><i class="fas fa-file-pdf"></i> CV Alternance</a>
                         <a href="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main stair-btn" style="--stair-index:1"><i class="fas fa-file-pdf"></i> CV Stage</a>
                         <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" rel="noopener" class="btn-sub linkedin-fade"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+
+                    <div class="brand-statement-wrap">
+                        <p class="brand-statement">Somewhere between a good idea and a great campaign, <span class="highlight">I EXIST.</span></p>
+                        <p class="brand-subtext">Where creativity meets technology — creating digital experiences, visual stories &amp; marketing that connect.</p>
                     </div>
                 </div>
             </div>
@@ -878,7 +884,79 @@
             </div>
         </section>
 
+        <!-- ══════════════════════ VEILLE ═══════════════════════ -->
+        <section id="veille" class="page">
+            <h2 class="section-title">Veille &amp; Créations</h2>
+            <p class="section-subtitle">Direction artistique, storytelling visuel &amp; identité de marque — une sélection de créations.</p>
+
+            <div class="flyer-showcase" id="flyerShowcase">
+
+                <article class="flyer-card v-reveal" style="--reveal-delay:0ms">
+                    <div class="flyer-media">
+                        <img src="assets/veille/flyer-bal-rouge.jpg" alt="Affiche — Bal de fin d'année" loading="lazy">
+                        <div class="flyer-shine"></div>
+                    </div>
+                    <div class="flyer-overlay">
+                        <span class="flyer-tag">Affiche événementielle</span>
+                        <h3 class="flyer-title">Bal de fin d'année</h3>
+                    </div>
+                </article>
+
+                <article class="flyer-card featured v-reveal" style="--reveal-delay:150ms">
+                    <div class="flyer-media">
+                        <img src="assets/veille/flyer-all-in-black.jpg" alt="Affiche — All In Black Night" loading="lazy">
+                        <div class="flyer-shine"></div>
+                    </div>
+                    <div class="flyer-overlay">
+                        <span class="flyer-tag">Soirée de parrainage</span>
+                        <h3 class="flyer-title">All In Black Night</h3>
+                        <p class="flyer-caption">Turning imagination into communication that leaves an impression</p>
+                    </div>
+                </article>
+
+                <article class="flyer-card v-reveal" style="--reveal-delay:300ms">
+                    <div class="flyer-media">
+                        <img src="assets/veille/flyer-bal-mafia.jpg" alt="Affiche — Bal de fin d'année Mafia" loading="lazy">
+                        <div class="flyer-shine"></div>
+                    </div>
+                    <div class="flyer-overlay">
+                        <span class="flyer-tag">Affiche à thème</span>
+                        <h3 class="flyer-title">Bal de fin d'année — Mafia</h3>
+                        <p class="flyer-caption">Where bold ideas become meaningful brand experiences</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="glass-card veille-pdf" id="veillePdfCard">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-pdf icon-pdf" style="color:#6366f1;"></i>
+                        <span>Flyer — Ateliers de Soutien Scolaire</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-icon" onclick="toggleVeillePdf(this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                        <a href="assets/veille/Flyer_Atelier_Soutien.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <p class="comp">Conception graphique &amp; supports de communication pédagogique.</p>
+
+                <div id="veille-pdf-preview" class="pdf-collapsible">
+                    <div class="preview-container">
+                        <iframe src="assets/veille/Flyer_Atelier_Soutien.pdf" width="100%" height="600px" style="border:none;" title="Flyer Ateliers de Soutien Scolaire"></iframe>
+                    </div>
+                    <p class="pdf-tagline" id="veillePdfTagline">I create more than content — I create reasons to remember a brand.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <!-- Lightbox (kept outside .page so it can overlay the full viewport) -->
+    <div class="lightbox" id="flyerLightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer" type="button">&times;</button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
 
     <script>
       function forceDownload(url, filename) {
@@ -905,6 +983,62 @@
         el.style.display = isHidden ? 'block' : 'none';
         if (btn) btn.classList.toggle('active', isHidden);
       }
+
+      function toggleVeillePdf(btn) {
+        togglePreview('veille-pdf-preview', btn);
+        const preview = document.getElementById('veille-pdf-preview');
+        const tagline = document.getElementById('veillePdfTagline');
+        if (preview && tagline && preview.style.display === 'block') {
+          tagline.classList.remove('reveal-text');
+          void tagline.offsetWidth; // reflow to restart the animation
+          tagline.classList.add('reveal-text');
+        }
+      }
+
+      // ── Flyer gallery: scroll reveal + lightbox ──────────────
+      document.addEventListener('DOMContentLoaded', function () {
+        const revealEls = document.querySelectorAll('.v-reveal');
+        if (revealEls.length && 'IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.2 });
+          revealEls.forEach(el => observer.observe(el));
+        } else {
+          revealEls.forEach(el => el.classList.add('in-view'));
+        }
+
+        const lightbox = document.getElementById('flyerLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.flyer-card .flyer-media img').forEach(img => {
+          img.addEventListener('click', () => {
+            if (!lightbox || !lightboxImg) return;
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('open');
+          });
+        });
+
+        function closeLightbox() {
+          if (!lightbox) return;
+          lightbox.classList.remove('open');
+        }
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightbox) {
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+          });
+        }
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeLightbox();
+        });
+      });
 
       function toggleModules() {
         const list = document.getElementById('modules-list');
