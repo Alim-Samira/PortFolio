@@ -276,7 +276,7 @@
             <li><a href="#" class="nav-link" onclick="showPage('certifs', this)">Certifs</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('crm', this)">Projet CRM</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('soutenance', this)">Soutenance</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('veille', this)">Veille</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('creations', this)">Créations</a></li>
         </ul>
     </nav>
 
@@ -335,14 +335,40 @@
                         <span class="stair-step step-1" aria-hidden="true"></span>
                         <span class="stair-step step-2" aria-hidden="true"></span>
                         <span class="stair-step step-3" aria-hidden="true"></span>
-                        <a href="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main stair-btn" style="--stair-index:0"><i class="fas fa-file-pdf"></i> CV Alternance</a>
-                        <a href="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main stair-btn" style="--stair-index:1"><i class="fas fa-file-pdf"></i> CV Stage</a>
+
+                        <div class="cv-btn-wrap stair-btn" style="--stair-index:0">
+                            <a href="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Alternance</a>
+                            <button type="button" class="cv-preview-link" onclick="togglePreview('cv-alternance-preview', this)">
+                                <i class="fas fa-eye"></i> Aperçu
+                            </button>
+                        </div>
+
+                        <div class="cv-btn-wrap stair-btn" style="--stair-index:1">
+                            <a href="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" download class="btn-main"><i class="fas fa-file-pdf"></i> CV Stage</a>
+                            <button type="button" class="cv-preview-link" onclick="togglePreview('cv-stage-preview', this)">
+                                <i class="fas fa-eye"></i> Aperçu
+                            </button>
+                        </div>
+
                         <a href="https://www.linkedin.com/in/samira-alim-30324a306" target="_blank" rel="noopener" class="btn-sub linkedin-fade"><i class="fab fa-linkedin"></i> LinkedIn</a>
                     </div>
 
                     <div class="brand-statement-wrap">
                         <p class="brand-statement">Somewhere between a good idea and a great campaign, <span class="highlight">I EXIST.</span></p>
                         <p class="brand-subtext">Where creativity meets technology — creating digital experiences, visual stories &amp; marketing that connect.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-previews">
+                <div id="cv-alternance-preview" class="pdf-collapsible cv-preview-panel">
+                    <div class="preview-container">
+                        <iframe src="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" width="100%" height="600px" style="border:none;" title="Aperçu — CV Alternance"></iframe>
+                    </div>
+                </div>
+                <div id="cv-stage-preview" class="pdf-collapsible cv-preview-panel">
+                    <div class="preview-container">
+                        <iframe src="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" width="100%" height="600px" style="border:none;" title="Aperçu — CV Stage"></iframe>
                     </div>
                 </div>
             </div>
@@ -885,15 +911,15 @@
         </section>
 
         <!-- ══════════════════════ VEILLE ═══════════════════════ -->
-        <section id="veille" class="page">
-            <h2 class="section-title">Veille &amp; Créations</h2>
+        <section id="creations" class="page">
+            <h2 class="section-title">Créations</h2>
             <p class="section-subtitle">Direction artistique, storytelling visuel &amp; identité de marque — une sélection de créations.</p>
 
             <div class="flyer-showcase" id="flyerShowcase">
 
                 <article class="flyer-card v-reveal" style="--reveal-delay:0ms">
                     <div class="flyer-media">
-                        <img src="creation/flyer-bal-rouge.jpg" alt="Affiche — Bal de fin d'année" loading="lazy">
+                        <img src="assets/creation/flyer-bal-rouge.jpg" alt="Affiche — Bal de fin d'année" loading="lazy">
                         <div class="flyer-shine"></div>
                     </div>
                     <div class="flyer-overlay">
@@ -904,7 +930,7 @@
 
                 <article class="flyer-card featured v-reveal" style="--reveal-delay:150ms">
                     <div class="flyer-media">
-                        <img src="creation/flyer-all-in-black.jpg" alt="Affiche — All In Black Night" loading="lazy">
+                        <img src="assets/creation/flyer-all-in-black.jpg" alt="Affiche — All In Black Night" loading="lazy">
                         <div class="flyer-shine"></div>
                     </div>
                     <div class="flyer-overlay">
@@ -916,7 +942,7 @@
 
                 <article class="flyer-card v-reveal" style="--reveal-delay:300ms">
                     <div class="flyer-media">
-                        <img src="creation/flyer-bal-mafia.jpg" alt="Affiche — Bal de fin d'année Mafia" loading="lazy">
+                        <img src="assets/creation/flyer-bal-mafia.jpg" alt="Affiche — Bal de fin d'année Mafia" loading="lazy">
                         <div class="flyer-shine"></div>
                     </div>
                     <div class="flyer-overlay">
@@ -936,14 +962,14 @@
                     </div>
                     <div class="file-actions">
                         <button class="btn-icon" onclick="toggleVeillePdf(this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="creation/Flyer_Atelier_Soutien.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                        <a href="assets/creation/Flyer_Atelier_Soutien.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 <p class="comp">Conception graphique &amp; supports de communication pédagogique.</p>
 
                 <div id="veille-pdf-preview" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="creation/Flyer_Atelier_Soutien.pdf" width="100%" height="600px" style="border:none;" title="Flyer Ateliers de Soutien Scolaire"></iframe>
+                        <iframe src="assets/creation/Flyer_Atelier_Soutien.pdf" width="100%" height="600px" style="border:none;" title="Flyer Ateliers de Soutien Scolaire"></iframe>
                     </div>
                     <p class="pdf-tagline" id="veillePdfTagline">I create more than content — I create reasons to remember a brand.</p>
                 </div>
