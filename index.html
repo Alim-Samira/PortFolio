@@ -276,12 +276,12 @@
         <div class="logo">AAAS<span>.</span></div>
         <ul class="menu">
             <li><a href="#" class="nav-link active" onclick="showPage('about', this)">Accueil</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('creations', this)">Créations</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('travaux', this)">Travaux</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('cours', this)">Cours</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('certifs', this)">Certifs</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('crm', this)">Projet CRM</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('soutenance', this)">Soutenance</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('creations', this)">Créations</a></li>
         </ul>
     </nav>
 
@@ -368,12 +368,12 @@
             <div class="cv-previews">
                 <div id="cv-alternance-preview" class="pdf-collapsible cv-preview-panel">
                     <div class="preview-container">
-                        <iframe src="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" width="100%" height="600px" style="border:none;" title="Aperçu — CV Alternance"></iframe>
+                        <iframe data-src="assets/CV/CV_ALIM_SAMIRA_ALTERNANCE.pdf" width="100%" height="600px" style="border:none;" title="Aperçu — CV Alternance"></iframe>
                     </div>
                 </div>
                 <div id="cv-stage-preview" class="pdf-collapsible cv-preview-panel">
                     <div class="preview-container">
-                        <iframe src="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" width="100%" height="600px" style="border:none;" title="Aperçu — CV Stage"></iframe>
+                        <iframe data-src="assets/CV/CV_ALIM_SAMIRA_STAGE.pdf" width="100%" height="600px" style="border:none;" title="Aperçu — CV Stage"></iframe>
                     </div>
                 </div>
             </div>
@@ -387,6 +387,81 @@
                             title="Showreel — Alim Samira"
                             loading="lazy"
                             allow="autoplay"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════ CRÉATIONS ═══════════════════════ -->
+        <section id="creations" class="page">
+            <h2 class="section-title">Créations</h2>
+            <p class="section-subtitle">Direction artistique, storytelling visuel &amp; identité de marque — une sélection de créations.</p>
+
+            <!-- ══ SHOWREEL (Créations) ══ -->
+            <div class="reel-section" style="margin-top:10px;">
+                <div class="reel-frame">
+                    <iframe data-src="assets/samira-reel.html?clean"
+                            title="Showreel — Alim Samira"
+                            allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="flyer-showcase" id="flyerShowcase">
+
+                <article class="flyer-card v-reveal" style="--reveal-delay:0ms">
+                    <div class="flyer-media">
+                        <img src="assets/creation/flyer-bal-rouge.jpg" alt="Affiche — Bal de fin d'année" loading="lazy">
+                        <div class="flyer-shine"></div>
+                    </div>
+                    <div class="flyer-overlay">
+                        <span class="flyer-tag">Affiche événementielle</span>
+                        <h3 class="flyer-title">Bal de fin d'année</h3>
+                    </div>
+                </article>
+
+                <article class="flyer-card featured v-reveal" style="--reveal-delay:150ms">
+                    <div class="flyer-media">
+                        <img src="assets/creation/flyer-all-in-black.jpg" alt="Affiche — All In Black Night" loading="lazy">
+                        <div class="flyer-shine"></div>
+                    </div>
+                    <div class="flyer-overlay">
+                        <span class="flyer-tag">Soirée de parrainage</span>
+                        <h3 class="flyer-title">All In Black Night</h3>
+                        <p class="flyer-caption">Turning imagination into communication that leaves an impression</p>
+                    </div>
+                </article>
+
+                <article class="flyer-card v-reveal" style="--reveal-delay:300ms">
+                    <div class="flyer-media">
+                        <img src="assets/creation/flyer-bal-mafia.jpg" alt="Affiche — Bal de fin d'année Mafia" loading="lazy">
+                        <div class="flyer-shine"></div>
+                    </div>
+                    <div class="flyer-overlay">
+                        <span class="flyer-tag">Affiche à thème</span>
+                        <h3 class="flyer-title">Bal de fin d'année — Mafia</h3>
+                        <p class="flyer-caption">Where bold ideas become meaningful brand experiences</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="glass-card veille-pdf" id="veillePdfCard">
+                <div class="file-header">
+                    <div class="file-title">
+                        <i class="fas fa-file-pdf icon-pdf" style="color:#6366f1;"></i>
+                        <span>Flyer — Ateliers de Soutien Scolaire</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-icon eye-btn" onclick="toggleVeillePdf(this)" title="Visualiser"><i class="fas fa-eye"></i></button>
+                        <a href="assets/creation/Flyer_Atelier_Soutien.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                <p class="comp">Conception graphique &amp; supports de communication pédagogique.</p>
+
+                <div id="veille-pdf-preview" class="pdf-collapsible">
+                    <div class="preview-container">
+                        <iframe data-src="assets/creation/Flyer_Atelier_Soutien.pdf" width="100%" height="600px" style="border:none;" title="Flyer Ateliers de Soutien Scolaire"></iframe>
+                    </div>
+                    <p class="pdf-tagline" id="veillePdfTagline">I create more than content — I create reasons to remember a brand.</p>
                 </div>
             </div>
         </section>
@@ -407,7 +482,7 @@
                 <p class="comp">Gestion complète du cycle : Achats, Stocks et Ventes.</p>
                 <div id="prev-odoo" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/TP/TP_Odoo_Samira.pdf" width="100%" height="500px" style="border:none;" title="TP Odoo"></iframe>
+                        <iframe data-src="assets/TP/TP_Odoo_Samira.pdf" width="100%" height="500px" style="border:none;" title="TP Odoo"></iframe>
                     </div>
                 </div>
             </div>
@@ -424,7 +499,7 @@
                 <p class="comp">Mise en pratique sur le CRM SaaS HubSpot.</p>
                 <div id="prev-hubspot" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/TP/TP_D%C3%A9couverte_HubSpot_.pdf" width="100%" height="500px" style="border:none;" title="TP HubSpot"></iframe>
+                        <iframe data-src="assets/TP/TP_D%C3%A9couverte_HubSpot_.pdf" width="100%" height="500px" style="border:none;" title="TP HubSpot"></iframe>
                     </div>
                 </div>
             </div>
@@ -478,7 +553,7 @@
                 <p class="comp">Analyse complète d'une campagne digitale multi-canal · CTR · CPC · CPA · ROI · Recommandations stratégiques.</p>
                 <div id="prev-etude" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/cours/5-%20%C3%89tude%20de%20cas%20KPI.pdf" width="100%" height="500px" style="border:none;" title="Étude de cas KPI"></iframe>
+                        <iframe data-src="assets/cours/5-%20%C3%89tude%20de%20cas%20KPI.pdf" width="100%" height="500px" style="border:none;" title="Étude de cas KPI"></iframe>
                     </div>
                 </div>
             </div>
@@ -498,7 +573,7 @@
                 <p class="comp">Sujet d'entraînement complet · 5 parties : Concepts · Étude de cas · Stratégie digitale · Dimension technique MIAGE · Enjeux éthiques.</p>
                 <div id="prev-sujet" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/cours/7-%20sujet%20blanc.pdf" width="100%" height="600px" style="border:none;" title="Sujet Blanc Communication Digitale"></iframe>
+                        <iframe data-src="assets/cours/7-%20sujet%20blanc.pdf" width="100%" height="600px" style="border:none;" title="Sujet Blanc Communication Digitale"></iframe>
                     </div>
                 </div>
             </div>
@@ -573,7 +648,7 @@
                     <p class="comp">Comparatif Pipeline commercial vs Funnel marketing · Différences clés.</p>
                     <div id="prev-pipeline" class="pdf-collapsible">
                         <div class="preview-container">
-                            <iframe src="assets/cours/3-%20pipeline%20vs%20funnel.pdf" width="100%" height="500px" style="border:none;" title="Pipeline vs Funnel"></iframe>
+                            <iframe data-src="assets/cours/3-%20pipeline%20vs%20funnel.pdf" width="100%" height="500px" style="border:none;" title="Pipeline vs Funnel"></iframe>
                         </div>
                     </div>
                 </div>
@@ -912,7 +987,7 @@
                 <p class="comp">Modélisation · Architecture · Fonctionnalités · Déploiement</p>
                 <div id="prev-rapport" class="pdf-collapsible">
                     <div class="preview-container">
-                        <iframe src="assets/CRM/Rapport_Projet_AAAS_CRM.pdf" width="100%" height="600px" style="border:none;" title="Rapport Projet AAAS CRM"></iframe>
+                        <iframe data-src="assets/CRM/Rapport_Projet_AAAS_CRM.pdf" width="100%" height="600px" style="border:none;" title="Rapport Projet AAAS CRM"></iframe>
                     </div>
                 </div>
             </div>
@@ -927,71 +1002,7 @@
             </div>
         </section>
 
-        <!-- ══════════════════════ VEILLE ═══════════════════════ -->
-        <section id="creations" class="page">
-            <h2 class="section-title">Créations</h2>
-            <p class="section-subtitle">Direction artistique, storytelling visuel &amp; identité de marque — une sélection de créations.</p>
-
-            <div class="flyer-showcase" id="flyerShowcase">
-
-                <article class="flyer-card v-reveal" style="--reveal-delay:0ms">
-                    <div class="flyer-media">
-                        <img src="assets/creation/flyer-bal-rouge.jpg" alt="Affiche — Bal de fin d'année" loading="lazy">
-                        <div class="flyer-shine"></div>
-                    </div>
-                    <div class="flyer-overlay">
-                        <span class="flyer-tag">Affiche événementielle</span>
-                        <h3 class="flyer-title">Bal de fin d'année</h3>
-                    </div>
-                </article>
-
-                <article class="flyer-card featured v-reveal" style="--reveal-delay:150ms">
-                    <div class="flyer-media">
-                        <img src="assets/creation/flyer-all-in-black.jpg" alt="Affiche — All In Black Night" loading="lazy">
-                        <div class="flyer-shine"></div>
-                    </div>
-                    <div class="flyer-overlay">
-                        <span class="flyer-tag">Soirée de parrainage</span>
-                        <h3 class="flyer-title">All In Black Night</h3>
-                        <p class="flyer-caption">Turning imagination into communication that leaves an impression</p>
-                    </div>
-                </article>
-
-                <article class="flyer-card v-reveal" style="--reveal-delay:300ms">
-                    <div class="flyer-media">
-                        <img src="assets/creation/flyer-bal-mafia.jpg" alt="Affiche — Bal de fin d'année Mafia" loading="lazy">
-                        <div class="flyer-shine"></div>
-                    </div>
-                    <div class="flyer-overlay">
-                        <span class="flyer-tag">Affiche à thème</span>
-                        <h3 class="flyer-title">Bal de fin d'année — Mafia</h3>
-                        <p class="flyer-caption">Where bold ideas become meaningful brand experiences</p>
-                    </div>
-                </article>
-
-            </div>
-
-            <div class="glass-card veille-pdf" id="veillePdfCard">
-                <div class="file-header">
-                    <div class="file-title">
-                        <i class="fas fa-file-pdf icon-pdf" style="color:#6366f1;"></i>
-                        <span>Flyer — Ateliers de Soutien Scolaire</span>
-                    </div>
-                    <div class="file-actions">
-                        <button class="btn-icon eye-btn" onclick="toggleVeillePdf(this)" title="Visualiser"><i class="fas fa-eye"></i></button>
-                        <a href="assets/creation/Flyer_Atelier_Soutien.pdf" download class="btn-icon" title="Télécharger"><i class="fas fa-download"></i></a>
-                    </div>
-                </div>
-                <p class="comp">Conception graphique &amp; supports de communication pédagogique.</p>
-
-                <div id="veille-pdf-preview" class="pdf-collapsible">
-                    <div class="preview-container">
-                        <iframe src="assets/creation/Flyer_Atelier_Soutien.pdf" width="100%" height="600px" style="border:none;" title="Flyer Ateliers de Soutien Scolaire"></iframe>
-                    </div>
-                    <p class="pdf-tagline" id="veillePdfTagline">I create more than content — I create reasons to remember a brand.</p>
-                </div>
-            </div>
-        </section>
+        
 
     </main>
 
@@ -1022,7 +1033,18 @@
       function togglePreview(id, btn) {
         const el = document.getElementById(id);
         if (!el) return;
+        const frame = el.querySelector('iframe[data-src]');
+        const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+                         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        if (frame && isMobile) {
+          // Mobile browsers can't embed PDFs (they ask to download) -> open in a new tab on click only
+          window.open(frame.getAttribute('data-src'), '_blank', 'noopener');
+          return;
+        }
         const isHidden = el.style.display === '' || el.style.display === 'none';
+        if (isHidden && frame && !frame.getAttribute('src')) {
+          frame.setAttribute('src', frame.getAttribute('data-src'));
+        }
         el.style.display = isHidden ? 'block' : 'none';
         if (btn) btn.classList.toggle('active', isHidden);
       }
@@ -1094,7 +1116,10 @@
       function showPage(pageId, navEl) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         const target = document.getElementById(pageId);
-        if (target) target.classList.add('active');
+        if (target) {
+          target.classList.add('active');
+          target.querySelectorAll('.reel-frame iframe[data-src]').forEach(f => { if (!f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src')); });
+        }
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         navEl.classList.add('active');
       }
