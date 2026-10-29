@@ -29,6 +29,12 @@ function showPage(pageId, clickedLink) {
                 target.style.transform = 'translateY(0) scale(1)';
             }, 50);
         }
+        // Charger le showreel (iframe différée) quand la page est visible
+        if (target) {
+            target.querySelectorAll('.reel-frame iframe[data-src]').forEach(f => {
+                if (!f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src'));
+            });
+        }
         // Charger le README quand on arrive sur la section CRM
         if (pageId === 'crm') loadReadme();
     }, 300);
